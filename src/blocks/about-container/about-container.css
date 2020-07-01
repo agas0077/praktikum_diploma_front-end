@@ -1,0 +1,11 @@
+@import url(./__image/about-container__image.css);
+@import url(./__text/about-container__text.css);
+@import url(./__title/about-container__title.css);
+@import url(./__subtitle/about-container__subtitle.css);
+
+.about-container {
+    display: flex;
+    padding: 80px 0;
+    padding-left: calc(100%/14);
+    padding-right: calc(100%/6.5);
+}

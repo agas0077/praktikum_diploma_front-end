@@ -1,0 +1,6 @@
+@import url(./_on/menu__button_on.css);
+
+.menu__button {
+    margin-right: 32px;
+    padding: 30px 0 26px;
+}

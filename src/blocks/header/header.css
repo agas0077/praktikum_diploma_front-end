@@ -1,0 +1,13 @@
+@import url(./__title/header__title.css);
+
+.header {
+    width: 100%;
+    max-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    padding: 0 calc(100%/14);
+    box-sizing: border-box;
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+}

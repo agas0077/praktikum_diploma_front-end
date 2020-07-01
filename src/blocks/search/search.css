@@ -1,0 +1,11 @@
+@import url(./__button/search__button.css);
+@import url(./__field/search__field.css);
+
+.search {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 100px;
+    min-height: 64px;
+    display: flex;
+    justify-content: space-between;
+}

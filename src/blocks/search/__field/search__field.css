@@ -1,0 +1,10 @@
+.search__field {
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    font-family: "Roboto";
+    font-size: 16px;
+    line-height: 22px;
+    width: 61%;
+    padding-left: 24px;
+}

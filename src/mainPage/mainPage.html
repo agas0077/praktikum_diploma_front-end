@@ -1,0 +1,77 @@
+  <!DOCTYPE html>
+  <html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Diploma</title>
+  </head>
+  <body>
+    <!-- <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>"> -->
+    <div class="root">
+      <img alt="Фон" src="<%=require('../images/mainPage-background.png')%>" class="background-image">
+      <div class="header-container">
+
+        <div class="header">
+          <div class="header__title">NewsExplorer</div>
+          <div class="menu">
+            <div class="menu__button menu__button_on">Главная</div> 
+            <div class="menu__button">Сохраненные статьи</div> 
+            <div class="menu__auth">Авторизация</div> 
+          </div>
+        </div>
+
+        <div class="search-container">
+          <h1 class="search-container__title">Что творится в мире?</h1>
+          <p class="search-container__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
+          <div class="search">
+            <input class="search__field" placeholder="Введите тему новостей">
+            <button class="search__button" type="submit">Искать</button>
+          </div>
+        </div>
+
+      </div>
+  
+      <div class="body">
+
+        <div class="cards-container">
+
+        </div>
+
+        <div class="about-container">
+          <div class="about-container__image"></div>
+          <div class="about-container__text">
+            <h2 class="about-container__title">Об авторе</h2>
+            <p class="about-container__subtitle">
+              Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.
+            </p>
+            <p class="about-container__subtitle">
+              Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.
+            </p>
+          </div> 
+        </div>
+
+      </div>
+
+      <div class="footer">
+        <p class="footer__title">
+          &copy 2020 Supersite, Powered by News API
+        </p>
+        <div class="footer__links">
+          <a href="#" class="footer__link footer__link_general-margin">Главная</a>
+          <a href="#" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
+          <a href="www.github.com" class="footer__link footer__link_general-margin">
+            <img src="<%=require('../images/git.svg')%>" alt="github">
+          </a>
+          <a href="www.facebook.com" class="footer__link footer__link_general-margin">
+            <img src="<%=require('../images/fb.svg')%>" alt="facebook" >
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <!-- Основной скрипт -->
+    <script src='<%= htmlWebpackPlugin.files.js %>'></script>
+
+  </body>
+  </html>

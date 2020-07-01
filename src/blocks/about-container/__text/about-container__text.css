@@ -1,0 +1,5 @@
+.about-container__text {
+    max-width: 600px;
+    margin-left: calc(100%/25);
+    margin-top: calc(100%/11)
+}

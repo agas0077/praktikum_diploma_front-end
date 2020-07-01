@@ -1,0 +1,8 @@
+.search-container__title {
+    font-size: 60px;
+    line-height: 64px;
+    font-family: Roboto Slab;
+    max-width: 608px;
+    font-weight: 400;
+    margin: 0 0 32px;
+}
