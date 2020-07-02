@@ -1,0 +1,5 @@
+.popup__content_general {
+    padding: 34px 36px 28px;
+    display: flex;
+    flex-direction: column;
+}

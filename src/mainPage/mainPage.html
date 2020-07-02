@@ -1,77 +1,176 @@
   <!DOCTYPE html>
   <html lang="ru">
+    
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Diploma</title>
+    <link rel="icon" href="<%=require('../images/favicon.png')%>" type="image/png">
   </head>
+
   <body>
     <!-- <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>"> -->
-    <div class="root">
-      <img alt="Фон" src="<%=require('../images/mainPage-background.png')%>" class="background-image">
-      <div class="header-container">
 
-        <div class="header">
-          <div class="header__title">NewsExplorer</div>
-          <div class="menu">
-            <div class="menu__button menu__button_on">Главная</div> 
-            <div class="menu__button">Сохраненные статьи</div> 
-            <div class="menu__auth">Авторизация</div> 
-          </div>
-        </div>
+    <!-- Попап регистрации -->
+    <!-- Надо ли делать валидацию? -->
+    <div style="display: none;" class="popup" id='reg-form'>
+      <div class="popup__content popup__content_general">
+        <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
+        <h3 class="popup__title">Регистрация</h3>
+        <form novalidate class="popup__form" name="reg">
 
-        <div class="search-container">
-          <h1 class="search-container__title">Что творится в мире?</h1>
-          <p class="search-container__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
-          <div class="search">
-            <input class="search__field" placeholder="Введите тему новостей">
-            <button class="search__button" type="submit">Искать</button>
-          </div>
-        </div>
+          <p class="popup__field-name">E-mail</p>
+          <input required type="email" id='email' name="email" class="popup__input popup__input_valid" placeholder="Введите свой E-mail">
+          <span style='display: none' id='error-email' class='error-message'></span>
+          
+          <p class="popup__field-name">Пароль</p>
+          <input required type="password" id='password' name="password" class="popup__input popup__input_valid" placeholder="Введите пароль">
+          <span style='display: none' id='error-password' class='error-message'></span>
 
-      </div>
-  
-      <div class="body">
+          <p class="popup__field-name">Имя</p>
+          <input required type="text" id='name' name="name" class="popup__input popup__input_valid" placeholder="Введите своё имя">
+          <span style='display: none' id='error-name' class='error-message'></span>
 
-        <div class="cards-container">
+          <button disabled type='submit' id='submit' class="popup__button">Зарегистрироваться</button>
+        </form>
 
-        </div>
-
-        <div class="about-container">
-          <div class="about-container__image"></div>
-          <div class="about-container__text">
-            <h2 class="about-container__title">Об авторе</h2>
-            <p class="about-container__subtitle">
-              Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.
-            </p>
-            <p class="about-container__subtitle">
-              Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.
-            </p>
-          </div> 
-        </div>
+        <p class="popup__switcher">или <span><button class="popup__switcher popup__switcher_button">Вход</button></span></p>
 
       </div>
+    </div>
 
-      <div class="footer">
-        <p class="footer__title">
-          &copy 2020 Supersite, Powered by News API
-        </p>
-        <div class="footer__links">
-          <a href="#" class="footer__link footer__link_general-margin">Главная</a>
-          <a href="#" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
-          <a href="www.github.com" class="footer__link footer__link_general-margin">
-            <img src="<%=require('../images/git.svg')%>" alt="github">
-          </a>
-          <a href="www.facebook.com" class="footer__link footer__link_general-margin">
-            <img src="<%=require('../images/fb.svg')%>" alt="facebook" >
-          </a>
+    <!-- Попап входа -->
+    <!-- Надо ли делать валидацию? -->
+    <div style="display: none;" class="popup" id='auth-form'>
+      <div class="popup__content popup__content_general">
+        <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
+        <h3 class="popup__title">Вход</h3>
+        <form novalidate class="popup__form" name="reg">
+
+          <p class="popup__field-name">E-mail</p>
+          <input required type="email" id='email' name="email" class="popup__input popup__input_valid" placeholder="Введите свой E-mail">
+          <span style='display: none' id='error-email' class='error-message'></span>
+          
+          <p class="popup__field-name">Пароль</p>
+          <input required type="password" id='password' name="password" class="popup__input popup__input_valid" placeholder="Введите пароль">
+          <span style='display: none' id='error-password' class='error-message'></span>
+
+          <button disabled type='submit' id='submit' class="popup__button">Войти</button>
+        </form>
+
+        <p class="popup__switcher">или <span><button class="popup__switcher popup__switcher_button">Зарегистрироваться</button></span></p>
+
+      </div>
+    </div>
+
+    <!-- Попап успешной регистрации -->
+    <div style="display: none;" class="popup" id='auth-form'>
+      <div class="popup__content popup__content_sucesses">
+        <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
+        <h3 class="popup__title popup__title_sucesses">Пользователь успешно зарегистрирован!</h3>
+        <button class="popup__switcher popup__switcher_button">Выполнить вход</button>
+      </div>
+    </div>
+
+    <!-- Фонове изображение -->
+    <img alt="Фон" src="<%=require('../images/mainPage-background.png')%>" class="background-image">
+
+    <!-- Хэдер -->
+    <div class="header-container">
+
+      <div class="header">
+        <div class="header__title">NewsExplorer</div>
+        <div class="menu">
+          <button type="button" class="menu__button menu__button_on">Главная</button> 
+          <button type="button" class="menu__button menu__button_off">Сохраненные статьи</button> 
+          <button type="button" class="menu__auth">Авторизация</button> 
+        </div>
+      </div>
+
+      <div class="search-container">
+        <h1 class="search-container__title">Что творится в мире?</h1>
+        <p class="search-container__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
+        <div class="search">
+          <input class="search__field" placeholder="Введите тему новостей">
+          <button class="search__button" type="submit">Искать</button>
         </div>
       </div>
 
     </div>
+    
+    <!-- Основаня часть -->
+    <div class="body">
+
+      <!-- Контейнер с карточками -->
+      <div style="display: none;" class="cards-container">
+        <h3 class="cards-container__title">Результаты поиска</h3>
+        <div class="cards-container__grid">
+          
+          <div class="card">
+            <!-- TODO: Create card in js -->
+          </div>
+          <div class="card">
+            <!-- TODO: Create card in js -->
+          </div>
+          <div class="card">
+            <!-- TODO: Create card in js -->
+          </div>
+          <div class="card">
+            <!-- TODO: Create card in js -->
+          </div>
+        </div>
+        <button class="cards-container__button">Показать еще</button>
+      </div>
+
+      <!-- Контейнер с прелоадером -->
+      <div style="display: none;" class="preloader-container">
+        <i class="circle-preloader"></i>  
+        <p class="preloader-container__title">Идет поиск новостей...</p>         
+      </div>
+
+      <!-- Контейнер, когда ничего не найдено -->
+      <div style="display: none;" class="not-found-container">
+        <img src="<%=require('../images/not-found_v1.png')%>" alt="Ничего не было найдено">
+        <h4 class="not-found-container__title">Ничего не найдено</h4> 
+        <p class="not-found-container__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
+      </div>
+
+      <div class="about-container">
+        <div class="about-container__image"></div>
+        <div class="about-container__text">
+          <h2 class="about-container__title">Об авторе</h2>
+          <p class="about-container__subtitle">
+            Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.
+          </p>
+          <p class="about-container__subtitle">
+            Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.
+          </p>
+        </div> 
+      </div>
+
+    </div>
+
+    <!-- Футер -->
+    <div class="footer">
+      <p class="footer__title">
+        &copy 2020 Supersite, Powered by News API
+      </p>
+      <div class="footer__links">
+        <a href="#" class="footer__link footer__link_general-margin">Главная</a>
+        <a href="#" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
+        <a href="www.github.com" class="footer__link footer__link_general-margin">
+          <img src="<%=require('../images/git.svg')%>" alt="github">
+        </a>
+        <a href="www.facebook.com" class="footer__link footer__link_general-margin">
+          <img src="<%=require('../images/fb.svg')%>" alt="facebook" >
+        </a>
+      </div>
+    </div>
+
     <!-- Основной скрипт -->
     <script src='<%= htmlWebpackPlugin.files.js %>'></script>
 
   </body>
+  
   </html>

@@ -6,10 +6,23 @@
 @import url(../blocks/search/search.css);
 @import url(../blocks/about-container/about-container.css);
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/cards-container/cards-container.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/circle-preloader/circle-preloader.css);
+@import url(../blocks/preloader-container/preloader-container.css);
+@import url(../blocks/not-found-container/not-found-container.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/error-message/error-message.css);
 
 @font-face {
     src: url(../fonts/Roboto/Roboto-Regular.ttf);
     font-family: "Roboto";
+}
+
+@font-face {
+    src: url(../fonts/Roboto/Roboto-Medium.ttf);
+    font-family: "Roboto";
+    font-weight: 500;
 }
 
 @font-face {
@@ -21,6 +34,11 @@
     src: url(../fonts/RobotoSlab/static/RobotoSlab-Bold.ttf);
     font-family: "Roboto Slab";
     font-weight: bold;
+}
+
+@font-face {
+    src: url(../fonts/Inter/Inter-Regular.woff2);
+    font-family: "Inter";
 }
 
 

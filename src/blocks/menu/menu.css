@@ -2,8 +2,5 @@
 @import url(./__button/menu__button.css);
 
 .menu {
-    display: flex;
-    font-size: 18px;
-    line-height: 24px;
-    
+    display: flex;  
 }
