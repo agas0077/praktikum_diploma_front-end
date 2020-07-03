@@ -1,0 +1,7 @@
+@import url(./__subtitle/articles-info__subtitle.css);
+@import url(./__title/articles-info__title.css);
+@import url(./__key-words/articles-info__key-words.css);
+
+.articles-info {
+    padding: 40px calc(100%/14) 56px;
+}

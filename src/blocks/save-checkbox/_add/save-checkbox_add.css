@@ -1,0 +1,11 @@
+.save-checkbox_add+label::after {
+    background-image: url(../../../images/checkbox.png);
+}
+
+.save-checkbox_add+label:hover::after {
+    background-image: url(../../../images/checkbox-hover.png);
+}
+
+.save-checkbox_add:checked+label::after {
+    background-image: url(../../../images/checkbox-checked.png);
+}

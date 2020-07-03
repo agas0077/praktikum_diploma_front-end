@@ -1,5 +1,8 @@
-@import url(./_on/menu__button_on.css);
+@import url(./_on-white/menu__button_on-white.css);
+@import url(./on-black/menu__button_on-black.css);
 @import url(./_off/menu__button_off.css);
+@import url(./_white/menu__button_white.css);
+@import url(./_black/menu__button_black.css);
 
 .menu__button {
     margin-right: 32px;
@@ -7,7 +10,6 @@
     background: none;
     font-size: 18px;
     line-height: 24px;
-    color: #fff;
     font-family: "Roboto";
 }
 

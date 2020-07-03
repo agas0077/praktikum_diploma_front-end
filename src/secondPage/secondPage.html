@@ -1,18 +1,109 @@
-  <!DOCTYPE html>
-  <html lang="ru">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Diploma</title>
-    </head>
-    <body>
-      <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
-      <div class="root">
-        <a href="./index.html">cklick</a>
-      </div>
-      <!-- Основной скрипт -->
-      <script src='<%= htmlWebpackPlugin.files.js %>'></script>
+<!DOCTYPE html>
+<html lang="ru">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Diploma</title>
+  <link rel="icon" sizes="16x16" href="<%=require('../images/favicon.png')%>" type="image/png">
+</head>
 
-    </body>
-  </html>
+<body>
+
+  <a href="./main.html">qweweqweqwe</a>
+
+  <!-- Хэдер -->
+  <div class="header-container">
+    <div class="header header_black">
+      <div class="header__title header__title_black">NewsExplorer</div>
+      <div class="menu"> 
+        <button type="button" class="menu__button menu__button_off menu__button_black">Главная</button> 
+        <button type="button" class="menu__button menu__button_on-black menu__button_black">Сохраненные статьи</button> 
+        <button type="button" class="menu__auth menu__auth_black">Грета &ensp;<img src="<%=require('../images/exit.png')%>"></button> 
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- Основаня часть -->
+  <div class="body">
+
+    <!-- Контейнер с информацией о сохраненных статьях -->
+    <div class="articles-info">
+      <p class="articles-info__subtitle">Сохраненные статьи</p>
+      <h3 class="articles-info__title">Грета, у вас 5 сохраненных статей</h3>
+      <p class="articles-info__key-words">По ключевым словам:
+        <span class="articles-info__key-words_bold">Природа</span>
+        ,
+        <span class="articles-info__key-words_bold">Тайга</span>
+        и
+        <span class="articles-info__key-words_bold">2 другим</span>
+      </p>
+    </div>
+
+    <!-- Контейнер с карточками -->
+    <div class="cards-container">
+      <div class="cards-container__grid cards-container__grid_no-button">
+        
+        <!-- Здесь карточки отличаются!!! -->
+        <div class="card">
+          
+          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ 
+            Здесь кнопки вообще не должны быть disabled -->
+          <input type="checkbox" class="save-checkbox save-checkbox_delete" id="checkbox{q}">
+          <label for="checkbox{q}" class="save-checkbox__lable"></label>
+          <div class="save-checkbox__message">Убрать из сохраненных</div>
+
+          <div class="card__key-word">Природа</div>
+
+          <img class="card__image" src="<%=require('../images/1.png')%>">
+          <p class="card__date">2 августа, 2019</p>
+          <h3 class="card__title">Национальное достояние – парки</h3>
+          <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+          <p class="card__source">ЛЕНТА.РУ</p>
+
+          <!-- TODO: Create card in js -->
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Контейнер с прелоадером -->
+    <div style="display: none;" class="preloader-container">
+      <i class="circle-preloader"></i>  
+      <p class="preloader-container__title">Идет поиск новостей...</p>         
+    </div>
+
+    <!-- Контейнер, когда ничего не найдено -->
+    <div style="display: none;" class="not-found-container">
+      <img src="<%=require('../images/not-found_v1.png')%>" alt="Ничего не было найдено">
+      <h4 class="not-found-container__title">Ничего не найдено</h4> 
+      <p class="not-found-container__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
+    </div>
+
+  </div>
+
+  <!-- Футер -->
+  <div class="footer">
+    <p class="footer__title">
+      &copy 2020 Supersite, Powered by News API
+    </p>
+    <div class="footer__links">
+      <a href="#" class="footer__link footer__link_general-margin">Главная</a>
+      <a href="#" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
+      <a href="www.github.com" class="footer__link footer__link_general-margin">
+        <img src="<%=require('../images/git.svg')%>" alt="github">
+      </a>
+      <a href="www.facebook.com" class="footer__link footer__link_general-margin">
+        <img src="<%=require('../images/fb.svg')%>" alt="facebook" >
+      </a>
+    </div>
+  </div>
+
+  <!-- Основной скрипт -->
+  <script src='<%= htmlWebpackPlugin.files.js %>'></script>
+
+</body>
+
+</html>

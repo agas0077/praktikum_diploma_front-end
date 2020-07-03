@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Diploma</title>
-    <link rel="icon" href="<%=require('../images/favicon.png')%>" type="image/png">
+    <link rel="icon" sizes="16x16" href="<%=require('../images/favicon.png')%>" type="image/png">
   </head>
 
   <body>
-    <!-- <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>"> -->
+
+    <a href="./index.html">qwdqwdqwdqwd</a>
 
     <!-- Попап регистрации -->
     <!-- Надо ли делать валидацию? -->
@@ -71,20 +72,17 @@
         <h3 class="popup__title popup__title_sucesses">Пользователь успешно зарегистрирован!</h3>
         <button class="popup__switcher popup__switcher_button">Выполнить вход</button>
       </div>
-    </div>
-
-    <!-- Фонове изображение -->
-    <img alt="Фон" src="<%=require('../images/mainPage-background.png')%>" class="background-image">
+    </div>    
 
     <!-- Хэдер -->
     <div class="header-container">
-
-      <div class="header">
-        <div class="header__title">NewsExplorer</div>
-        <div class="menu">
-          <button type="button" class="menu__button menu__button_on">Главная</button> 
-          <button type="button" class="menu__button menu__button_off">Сохраненные статьи</button> 
-          <button type="button" class="menu__auth">Авторизация</button> 
+      <img alt="Фон" src="<%=require('../images/mainPage-background.png')%>" class="background-image">
+      <div class="header header_white">
+        <div class="header__title header__title_white">NewsExplorer</div>
+        <div class="menu"> 
+          <button type="button" class="menu__button menu__button_on-white menu__button_white">Главная</button> 
+          <button type="button" class="menu__button menu__button_off menu__button_white">Сохраненные статьи</button> 
+          <button type="button" class="menu__auth menu__auth_white">Авторизация</button> 
         </div>
       </div>
 
@@ -103,11 +101,24 @@
     <div class="body">
 
       <!-- Контейнер с карточками -->
-      <div style="display: none;" class="cards-container">
+      <div class="cards-container">
         <h3 class="cards-container__title">Результаты поиска</h3>
-        <div class="cards-container__grid">
+        <div class="cards-container__grid cards-container__grid_with-button">
           
+          <!-- Первая карточка собрана -->
           <div class="card">
+            
+            <!-- Когда вошел, надо убирать появление сообщения и делать кнопку не disabled -->
+            <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{n}">
+            <label for="checkbox{n}" class="save-checkbox__lable"></label>
+            <div class="save-checkbox__message">Войдите, чтобы сохранить</div>
+
+            <img class="card__image" src="<%=require('../images/1.png')%>">
+            <p class="card__date">2 августа, 2019</p>
+            <h3 class="card__title">Национальное достояние – парки</h3>
+            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+            <p class="card__source">ЛЕНТА.РУ</p>
+
             <!-- TODO: Create card in js -->
           </div>
           <div class="card">

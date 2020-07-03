@@ -13,6 +13,7 @@
 @import url(../blocks/not-found-container/not-found-container.css);
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/error-message/error-message.css);
+@import url(../blocks/save-checkbox/save-checkbox.css);
 
 @font-face {
     src: url(../fonts/Roboto/Roboto-Regular.ttf);
@@ -39,6 +40,11 @@
 @font-face {
     src: url(../fonts/Inter/Inter-Regular.woff2);
     font-family: "Inter";
+}
+
+@font-face {
+    src: url(../fonts/SourceSansPro/SourceSansPro-Regular.ttf);
+    font-family: "Source Sans Pro";
 }
 
 

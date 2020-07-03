@@ -1,0 +1,13 @@
+.card__key-word {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background-color: #fff;
+    width: 88px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}

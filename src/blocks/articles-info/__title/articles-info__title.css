@@ -1,0 +1,8 @@
+.articles-info__title {
+    font-size: 40px;
+    line-height: 46px;
+    font-family: "Roboto Slab";
+    color: #1a1b22;
+    max-width: 530px;
+    margin: 0 0 30px;
+}

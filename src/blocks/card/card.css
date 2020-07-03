@@ -1,11 +1,16 @@
+@import url(./__image/card__image.css);
+@import url(./__date/card__date.css);
+@import url(./__title/card__title.css);
+@import url(./__text/card__text.css);
+@import url(./__source/card__source.css);
+@import url(./__key-word/card__key-word.css);
+
 .card {
-    height: 576px;
+    position: relative;
     width: 400px;
     border-radius: 16px;
-    
-
-
-
-    border: red 1px solid;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
 }
     

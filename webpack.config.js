@@ -66,13 +66,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: true,
             template: './src/mainPage/mainPage.html',
-            filename: 'index.html',
+            filename: 'main.html',
             chunks: ['mainPage'],
         }),
         new HtmlWebpackPlugin({
             inject: true,
             template: './src/secondPage/secondPage.html',
-            filename: 'secondPage.html',
+            filename: 'index.html',
             chunks: ['secondPage']
         }),
         new WebpackMd5Hash(),

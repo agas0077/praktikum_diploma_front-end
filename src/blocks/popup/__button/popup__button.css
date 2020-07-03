@@ -27,3 +27,7 @@
 .popup__button:focus {
     outline: none;
 }
+
+.popup__button:disabled {
+    background: #E6E8EB;
+}

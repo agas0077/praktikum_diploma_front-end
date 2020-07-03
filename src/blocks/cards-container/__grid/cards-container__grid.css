@@ -1,7 +1,10 @@
+@import url(./_no-button/cards-container__grid_no-button.css);
+@import url(./_with-button/cards-container__grid_with-button.css);
+
 .cards-container__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, 400px);
     grid-gap: 16px 16px;
     justify-content: center;
-    margin-bottom: 64px;
+    
 }
