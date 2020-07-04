@@ -8,3 +8,15 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 768px) {
+    .cards-container {
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cards-container {
+        padding: 32px 16px;
+    }
+}

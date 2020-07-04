@@ -5,3 +5,9 @@
 .articles-info {
     padding: 40px calc(100%/14) 56px;
 }
+
+@media screen and (max-width: 768px) {
+    .articles-info {
+        padding: 24px 40px 32px;
+    }
+}

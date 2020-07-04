@@ -12,6 +12,7 @@
     padding: 0 12px;
     font-size: 18px;
     line-height: 24px;
+    font-weight: 500;
     display: flex;
     align-items: center;
 }
@@ -26,4 +27,12 @@
 
 .menu__auth:focus {
     outline: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .menu__auth {
+        min-height: 40px;
+        margin: 14px 0 12px;
+        font-size: 16px;
+    }
 }

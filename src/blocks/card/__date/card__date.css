@@ -5,3 +5,9 @@
     color: #B6BCBF;
     margin: 20px 0 12px 24px;
 }
+
+@media screen and (max-width: 768px) {
+    .card__date {
+        margin: 16px 0 12px 16px;
+    }
+}

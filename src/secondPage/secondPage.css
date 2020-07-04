@@ -9,6 +9,8 @@
 @import url(../blocks/not-found-container/not-found-container.css);
 @import url(../blocks/save-checkbox/save-checkbox.css);
 @import url(../blocks/articles-info/articles-info.css);
+@import url(../blocks/mobile-header/mobile-header.css);
+@import url(../blocks/mobile-menu/mobile-menu.css);
 
 @font-face {
     src: url(../fonts/Roboto/Roboto-Regular.ttf);

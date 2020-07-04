@@ -24,3 +24,12 @@
 .search__button:focus {
     outline: none;
 }
+
+@media screen and (max-width: 550px) {
+    .search__button {
+        width: 100%;
+        box-sizing: border-box;
+        height: 56px;
+        padding: 0;
+    }
+}

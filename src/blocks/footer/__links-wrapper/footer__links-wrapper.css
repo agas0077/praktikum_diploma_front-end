@@ -1,0 +1,9 @@
+.footer__links-wrapper {
+    display: flex;
+}
+
+@media screen and (max-width: 560px) {
+    .footer__links-wrapper {
+        flex-direction: column;
+    }
+}

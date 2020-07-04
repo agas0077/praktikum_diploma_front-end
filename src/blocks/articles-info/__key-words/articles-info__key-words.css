@@ -6,3 +6,9 @@
     color: #1a1b22;
     margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .articles-info__key-words {
+        font-size: 14px;
+    }
+}

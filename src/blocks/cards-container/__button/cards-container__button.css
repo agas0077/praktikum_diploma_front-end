@@ -24,3 +24,10 @@
 .cards-container__button:focus {
     outline: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .cards-container__button {
+       width: 240px;
+       height: 56px;
+    }
+}

@@ -1,3 +1,5 @@
+@import url(./_show/save-checkbox__message_show.css);
+
 .save-checkbox__message {
     display: none;
     justify-content: center;
@@ -22,6 +24,12 @@
     position: absolute;
     top: 24px;
     right: 69px;
+}
+
+@media screen and (max-width: 768px) {
+    .save-checkbox__message {
+        top: 8px;
+    }
 }
 
 

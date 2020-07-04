@@ -4,3 +4,10 @@
     color: rgba(26, 27, 34, .5);
     margin: 0 0 30px;
 }
+
+@media screen and (max-width: 768px) {
+    .articles-info__subtitle {
+        margin: 0 0 16px;
+        font-size: 14px;
+    }
+}

@@ -10,3 +10,18 @@
     justify-content: space-between;
     margin-bottom: calc(100%/15);
 }
+
+@media screen and (max-width: 768px) {
+    .search {
+        min-height: 56px;
+        margin-bottom: calc(100vw/17);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .search {
+        flex-direction: column;
+        background: none;
+        margin-bottom: 0 0 32px;
+    }
+}

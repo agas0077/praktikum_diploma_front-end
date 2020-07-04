@@ -1,3 +1,15 @@
 .cards-container__grid_with-button {
     margin-bottom: 64px;
 }
+
+@media screen and (max-width: 768px) {
+    .cards-container__grid_with-button {
+        margin-bottom: 22px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cards-container__grid_with-button {
+        margin-bottom: 15px;
+    }
+}

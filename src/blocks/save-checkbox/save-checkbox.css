@@ -30,6 +30,20 @@
     background-repeat: no-repeat;
 }
 
-.save-checkbox__lable:hover ~ .save-checkbox__message {
+.save-checkbox__lable:hover ~ .save-checkbox__message.save-checkbox__message_show {
     display: flex;
+}
+
+.save-checkbox__lable:hover ~ .save-checkbox__message.save-checkbox__message_hide {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) { 
+    .save-checkbox__lable:hover ~ .save-checkbox__message.save-checkbox__message_hide {
+        display: none;
+    }
+    .save-checkbox+label {
+        top: 8px;
+        right: 8px;
+    }
 }

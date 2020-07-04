@@ -11,3 +11,16 @@
     padding: 0 calc(100%/14);
     box-sizing: border-box;
 }
+
+@media screen and (max-width: 768px) {
+    .header {
+        max-height: 66px;
+        padding: 0 calc(100%/20);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .header {
+        display: none;
+    }
+}

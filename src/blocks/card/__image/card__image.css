@@ -5,3 +5,9 @@
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
 }
+
+@media screen and (max-width: 768px) {
+    .card__image {
+        max-height: 150px;
+    }
+}

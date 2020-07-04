@@ -8,3 +8,12 @@
     width: 61%;
     padding-left: 24px;
 }
+
+@media screen and (max-width: 550px) {
+    .search__field {
+        width: 100%;
+        box-sizing: border-box;
+        height: 56px;
+        margin-bottom: 16px;
+    }
+}

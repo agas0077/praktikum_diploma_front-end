@@ -6,5 +6,18 @@
     grid-template-columns: repeat(auto-fill, 400px);
     grid-gap: 16px 16px;
     justify-content: center;
-    
+}
+
+@media screen and (max-width: 768px) {
+    .cards-container__grid {
+        grid-gap: 8px 8px;
+        grid-template-columns: repeat(auto-fill, 224px);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .cards-container__grid {
+        grid-gap: 8px 8px;
+        grid-template-columns: repeat(auto-fill, 288px);
+    }
 }
