@@ -12,10 +12,13 @@
 @import url(../blocks/preloader-container/preloader-container.css);
 @import url(../blocks/not-found-container/not-found-container.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/form/form.css);
 @import url(../blocks/error-message/error-message.css);
 @import url(../blocks/save-checkbox/save-checkbox.css);
 @import url(../blocks/mobile-header/mobile-header.css);
 @import url(../blocks/mobile-menu/mobile-menu.css);
+@import url(../blocks/switcher/switcher.css);
+@import url(../blocks/mobile-popup/mobile-popup.css);
 
 @font-face {
     src: url(../fonts/Roboto/Roboto-Regular.ttf);

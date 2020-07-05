@@ -1,0 +1,33 @@
+.form__button {
+    background: #2F71E5;
+    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: "Roboto";
+    color: #fff;
+    border-radius: 100px;
+    align-self: center;
+    height: 64px;
+    width: 100%;
+    border: none;
+}
+
+.form__button:hover {
+    background: #347EFF;
+    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2); 
+    cursor: pointer;
+}
+
+.form__button:active {
+    background: #2A65CC;
+    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+}
+
+.form__button:focus {
+    outline: none;
+}
+
+.form__button:disabled {
+    background: #E6E8EB;
+}

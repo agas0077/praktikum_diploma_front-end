@@ -1,9 +1,0 @@
-@import url(./_button/popup__switcher_button.css);
-
-.popup__switcher {
-    font-size: 14px;
-    line-height: 17px;
-    font-family: Inter;
-    align-self: center;
-    margin: 0;
-}

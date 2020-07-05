@@ -68,12 +68,14 @@ module.exports = {
             template: './src/mainPage/mainPage.html',
             filename: 'index.html',
             chunks: ['mainPage'],
+            favicon: './src/images/favicon.png'
         }),
         new HtmlWebpackPlugin({
             inject: true,
             template: './src/secondPage/secondPage.html',
             filename: 'secondPage.html',
-            chunks: ['secondPage']
+            chunks: ['secondPage'],
+            favicon: './src/images/favicon.png'
         }),
         new WebpackMd5Hash(),
         new webpack.DefinePlugin({

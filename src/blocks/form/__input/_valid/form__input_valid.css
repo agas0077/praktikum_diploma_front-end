@@ -1,0 +1,7 @@
+.form__input_valid {
+    margin-bottom: 31px;
+}
+
+.form__input_valid:last-of-type {
+    margin-bottom: 39px;
+  }

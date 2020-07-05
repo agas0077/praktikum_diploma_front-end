@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Diploma</title>
-    <link rel="icon" sizes="16x16" href="<%=require('../images/favicon.png')%>" type="image/png">
+    <link rel="shortcut icon" type="image/x-icon" href="<%=htmlWebpackPlugin.files.favicon%>">
+    <title>Главная страница</title>
   </head>
 
   <body>
@@ -19,24 +19,25 @@
       <div class="popup__content popup__content_general">
         <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title">Регистрация</h3>
-        <form novalidate class="popup__form" name="reg">
 
-          <p class="popup__field-name">E-mail</p>
-          <input required type="email" id='email' name="email" class="popup__input popup__input_valid" placeholder="Введите свой E-mail">
+        <form novalidate class="form" name="reg">
+
+          <p class="form__field-name">E-mail</p>
+          <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
           <span style='display: none' id='error-email' class='error-message'></span>
           
-          <p class="popup__field-name">Пароль</p>
-          <input required type="password" id='password' name="password" class="popup__input popup__input_valid" placeholder="Введите пароль">
+          <p class="form__field-name">Пароль</p>
+          <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
           <span style='display: none' id='error-password' class='error-message'></span>
 
-          <p class="popup__field-name">Имя</p>
-          <input required type="text" id='name' name="name" class="popup__input popup__input_valid" placeholder="Введите своё имя">
+          <p class="form__field-name">Имя</p>
+          <input required type="text" id='name' name="name" class="form__input form__input_valid" placeholder="Введите своё имя">
           <span style='display: none' id='error-name' class='error-message'></span>
 
-          <button disabled type='submit' id='submit' class="popup__button">Зарегистрироваться</button>
+          <button disabled type='submit' id='submit' class="form__button">Зарегистрироваться</button>
         </form>
 
-        <p class="popup__switcher">или <span><button class="popup__switcher popup__switcher_button">Вход</button></span></p>
+        <p class="switcher">или <span><button class="switcher switcher_button">Вход</button></span></p>
 
       </div>
     </div>
@@ -47,20 +48,20 @@
       <div class="popup__content popup__content_general">
         <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title">Вход</h3>
-        <form novalidate class="popup__form" name="reg">
+        <form novalidate class="form" name="reg">
 
-          <p class="popup__field-name">E-mail</p>
-          <input required type="email" id='email' name="email" class="popup__input popup__input_valid" placeholder="Введите свой E-mail">
+          <p class="form__field-name">E-mail</p>
+          <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
           <span style='display: none' id='error-email' class='error-message'></span>
           
-          <p class="popup__field-name">Пароль</p>
-          <input required type="password" id='password' name="password" class="popup__input popup__input_valid" placeholder="Введите пароль">
+          <p class="form__field-name">Пароль</p>
+          <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
           <span style='display: none' id='error-password' class='error-message'></span>
 
-          <button disabled type='submit' id='submit' class="popup__button">Войти</button>
+          <button disabled type='submit' id='submit' class="form__button">Войти</button>
         </form>
 
-        <p class="popup__switcher">или <span><button class="popup__switcher popup__switcher_button">Зарегистрироваться</button></span></p>
+        <p class="switcher">или <span><button class="switcher switcher_button">Зарегистрироваться</button></span></p>
 
       </div>
     </div>
@@ -70,10 +71,52 @@
       <div class="popup__content popup__content_sucesses">
         <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title popup__title_sucesses">Пользователь успешно зарегистрирован!</h3>
-        <button class="popup__switcher popup__switcher_button">Выполнить вход</button>
+        <button class="switcher switcher_button">Выполнить вход</button>
       </div>
-    </div>    
+    </div>  
 
+    <!-- Мобильный попап входа -->
+    <div style="display: none;" class="mobile-popup">
+      <h3 class="mobile-popup__title">Вход</h3>
+      <form novalidate class="form" name="reg">
+
+        <p class="form__field-name">E-mail</p>
+        <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
+        <span style='display: none' id='error-email' class='error-message'></span>
+        
+        <p class="form__field-name">Пароль</p>
+        <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
+        <span style='display: none' id='error-password' class='error-message'></span>
+
+        <button disabled type='submit' id='submit' class="form__button">Войти</button>
+      </form>
+
+      <p class="switcher">или <span><button class="switcher switcher_button">Зарегистрироваться</button></span></p>
+    </div>
+
+    <!-- Мобильный попап регистрации -->
+    <div style="display: none;" class="mobile-popup">
+      <h3 class="mobile-popup__title">Вход</h3>
+      <form novalidate class="form" name="reg">
+
+        <p class="form__field-name">E-mail</p>
+        <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
+        <span style='display: none' id='error-email' class='error-message'></span>
+        
+        <p class="form__field-name">Пароль</p>
+        <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
+        <span style='display: none' id='error-password' class='error-message'></span>
+
+        <p class="form__field-name">Имя</p>
+        <input required type="text" id='name' name="name" class="form__input form__input_valid" placeholder="Введите своё имя">
+        <span style='display: none' id='error-name' class='error-message'></span>
+
+        <button disabled type='submit' id='submit' class="form__button">Зарегистрироваться</button>
+      </form>
+
+      <p class="switcher">или <span><button class="switcher switcher_button">Вход</button></span></p>
+    </div>
+    
     <!-- Мобильное меню -->
     <div style="display: none;" class="mobile-menu">
       <div class="mobile-menu__content">
@@ -217,15 +260,15 @@
       <div class="footer__links">
 
         <div class="footer__links-wrapper">
-          <a href="#" class="footer__link footer__link_general-margin">Главная</a>
-          <a href="#" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
+          <a href="./index.html" class="footer__link footer__link_general-margin">Главная</a>
+          <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
         </div>
         
         <div class="footer__icon-wrapper">
-          <a href="www.github.com" class="footer__link footer__link_larger-margin">
+          <a href="https://www.github.com" class="footer__link footer__link_larger-margin">
             <img src="<%=require('../images/git.svg')%>" alt="github">
           </a>
-          <a href="www.facebook.com" class="footer__link footer__link_general-margin">
+          <a href="https://www.facebook.com" class="footer__link footer__link_general-margin">
             <img src="<%=require('../images/fb.svg')%>" alt="facebook" >
           </a>
         </div>
