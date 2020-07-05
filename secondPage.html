@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Сохраненные статьи</title>
+<link rel="shortcut icon" href="favicon.png"><link href="css/secondPage.203faa8df9247ed130d0.css" rel="stylesheet"></head>
+
+<body>
+  
+  <!-- Мобильное меню -->
+  <div style="display: none;" class="mobile-menu">
+    <div class="mobile-menu__content">
+      <a href="./index.html" class="mobile-menu__button">Главная</a> 
+      <a href="./secondPage.html" class="mobile-menu__button">Сохраненные статьи</a> 
+      <button type="button" class="mobile-menu__auth">Грета&nbsp;<img src="./images/exit-white.png"></button> 
+    </div>
+  </div>
+
+  <!-- Стандартный хэдер -->
+  <div class="header-container">
+    <div class="header header_black">
+      <div class="header__title header__title_black">NewsExplorer</div>
+      <div class="menu"> 
+        <a href="./index.html" class="menu__button menu__button_off menu__button_black">Главная</a> 
+        <a href="./secondPage.html" class="menu__button menu__button_on-black menu__button_black">Сохраненные статьи</a> 
+        <button type="button" class="menu__auth menu__auth_black">Грета &nbsp;<img src="./images/exit.png"></button> 
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Мобильный хедер -->
+  <div class="mobile-header mobile-header_black">
+    <div class="mobile-header__title">NewsExplorer</div>
+    <!-- Кнопку пусть меняет js -->
+    <img class="mobile-header__menu-button" src="./images/menu-button-black.png" alt="Кнопка меню">
+  </div>
+  
+  <!-- Основаня часть -->
+  <div class="body">
+
+    <!-- Контейнер с информацией о сохраненных статьях -->
+    <div class="articles-info">
+      <p class="articles-info__subtitle">Сохраненные статьи</p>
+      <h3 class="articles-info__title">Грета, у вас 5 сохраненных статей</h3>
+      <p class="articles-info__key-words">По ключевым словам:
+        <span class="articles-info__key-words_bold">Природа</span>
+        ,
+        <span class="articles-info__key-words_bold">Тайга</span>
+        и
+        <span class="articles-info__key-words_bold">2 другим</span>
+      </p>
+    </div>
+
+    <!-- Контейнер с карточками -->
+    <div class="cards-container">
+      <div class="cards-container__grid cards-container__grid_no-button">
+        
+        <!-- Здесь карточки отличаются!!! -->
+        <div class="card">
+          
+          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ 
+            Здесь кнопки вообще не должны быть disabled -->
+          <input type="checkbox" class="save-checkbox save-checkbox_delete" id="checkbox{q}">
+          <label for="checkbox{q}" class="save-checkbox__lable"></label>
+          <div class="save-checkbox__message save-checkbox__message_hide">Убрать из сохраненных</div>
+
+          <div class="card__key-word">Природа</div>
+
+          <img class="card__image" src="./images/1.png">
+          <p class="card__date">2 августа, 2019</p>
+          <h3 class="card__title">Национальное достояние – парки</h3>
+          <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+          <p class="card__source">ЛЕНТА.РУ</p>
+
+          <!-- TODO: Create card in js -->
+        </div>
+
+        <div class="card">
+          
+          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ 
+            Здесь кнопки вообще не должны быть disabled -->
+          <input type="checkbox" class="save-checkbox save-checkbox_delete" id="checkbox{q}">
+          <label for="checkbox{q}" class="save-checkbox__lable"></label>
+          <div class="save-checkbox__message save-checkbox__message_hide">Убрать из сохраненных</div>
+
+          <div class="card__key-word">Природа</div>
+
+          <img class="card__image" src="./images/1.png">
+          <p class="card__date">2 августа, 2019</p>
+          <h3 class="card__title">Национальное достояние – парки</h3>
+          <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+          <p class="card__source">ЛЕНТА.РУ</p>
+
+          <!-- TODO: Create card in js -->
+        </div>
+
+        <div class="card">
+          
+          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ 
+            Здесь кнопки вообще не должны быть disabled -->
+          <input type="checkbox" class="save-checkbox save-checkbox_delete" id="checkbox{q}">
+          <label for="checkbox{q}" class="save-checkbox__lable"></label>
+          <div class="save-checkbox__message save-checkbox__message_hide">Убрать из сохраненных</div>
+
+          <div class="card__key-word">Природа</div>
+
+          <img class="card__image" src="./images/1.png">
+          <p class="card__date">2 августа, 2019</p>
+          <h3 class="card__title">Национальное достояние – парки</h3>
+          <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
+          <p class="card__source">ЛЕНТА.РУ</p>
+
+          <!-- TODO: Create card in js -->
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Контейнер с прелоадером -->
+    <div style="display: none;" class="preloader-container">
+      <i class="circle-preloader"></i>  
+      <p class="preloader-container__title">Идет поиск новостей...</p>         
+    </div>
+
+    <!-- Контейнер, когда ничего не найдено -->
+    <div style="display: none;" class="not-found-container">
+      <img src="./images/not-found_v1.png" alt="Ничего не было найдено">
+      <h4 class="not-found-container__title">Ничего не найдено</h4> 
+      <p class="not-found-container__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
+    </div>
+
+  </div>
+
+  <!-- Футер -->
+  <div class="footer">
+    <p class="footer__title">
+      &copy 2020 Supersite, Powered by News API
+    </p>
+    <div class="footer__links">
+
+      <div class="footer__links-wrapper">
+        <a href="./index.html" class="footer__link footer__link_general-margin">Главная</a>
+        <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
+      </div>
+      
+      <div class="footer__icon-wrapper">
+        <a href="https://www.github.com" class="footer__link footer__link_larger-margin">
+          <img src="./images/git.svg" alt="github">
+        </a>
+        <a href="https://www.facebook.com" class="footer__link footer__link_general-margin">
+          <img src="./images/fb.svg" alt="facebook" >
+        </a>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Основной скрипт -->
+  <script src='js/secondPage.da633a8dc8d72b3618f9.js'></script>
+
+<script type="text/javascript" src="js/secondPage.da633a8dc8d72b3618f9.js"></script></body>
+
+</html>
