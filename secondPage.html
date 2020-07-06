@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
-  
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
   <title>Сохраненные статьи</title>
-<link rel="shortcut icon" href="favicon.png"><link href="css/secondPage.203faa8df9247ed130d0.css" rel="stylesheet"></head>
+</head>
 
 <body>
-  
+
   <!-- Мобильное меню -->
   <div style="display: none;" class="mobile-menu">
     <div class="mobile-menu__content">
-      <a href="./index.html" class="mobile-menu__button">Главная</a> 
-      <a href="./secondPage.html" class="mobile-menu__button">Сохраненные статьи</a> 
-      <button type="button" class="mobile-menu__auth">Грета&nbsp;<img src="./images/exit-white.png"></button> 
+      <a href="./index.html" class="mobile-menu__button">Главная</a>
+      <a href="./secondPage.html" class="mobile-menu__button">Сохраненные статьи</a>
+      <button type="button" class="mobile-menu__auth">Грета&nbsp;<img src="./images/exit-white.png"></button>
     </div>
   </div>
 
@@ -23,10 +24,10 @@
   <div class="header-container">
     <div class="header header_black">
       <div class="header__title header__title_black">NewsExplorer</div>
-      <div class="menu"> 
-        <a href="./index.html" class="menu__button menu__button_off menu__button_black">Главная</a> 
-        <a href="./secondPage.html" class="menu__button menu__button_on-black menu__button_black">Сохраненные статьи</a> 
-        <button type="button" class="menu__auth menu__auth_black">Грета &nbsp;<img src="./images/exit.png"></button> 
+      <div class="menu">
+        <a href="./index.html" class="menu__button menu__button_off menu__button_black">Главная</a>
+        <a href="./secondPage.html" class="menu__button menu__button_on-black menu__button_black">Сохраненные статьи</a>
+        <button type="button" class="menu__auth menu__auth_black">Грета &nbsp;<img src="./images/exit-black.png"></button>
       </div>
     </div>
 
@@ -38,7 +39,7 @@
     <!-- Кнопку пусть меняет js -->
     <img class="mobile-header__menu-button" src="./images/menu-button-black.png" alt="Кнопка меню">
   </div>
-  
+
   <!-- Основаня часть -->
   <div class="body">
 
@@ -58,11 +59,11 @@
     <!-- Контейнер с карточками -->
     <div class="cards-container">
       <div class="cards-container__grid cards-container__grid_no-button">
-        
+
         <!-- Здесь карточки отличаются!!! -->
         <div class="card">
-          
-          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ 
+
+          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ
             Здесь кнопки вообще не должны быть disabled -->
           <input type="checkbox" class="save-checkbox save-checkbox_delete" id="checkbox{q}">
           <label for="checkbox{q}" class="save-checkbox__lable"></label>
@@ -80,8 +81,8 @@
         </div>
 
         <div class="card">
-          
-          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ 
+
+          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ
             Здесь кнопки вообще не должны быть disabled -->
           <input type="checkbox" class="save-checkbox save-checkbox_delete" id="checkbox{q}">
           <label for="checkbox{q}" class="save-checkbox__lable"></label>
@@ -99,8 +100,8 @@
         </div>
 
         <div class="card">
-          
-          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ 
+
+          <!-- ВОЗМОЖНО ПРИДЕТСЯ ПЕРЕДЕЛАТЬ В ПРОСТО КНОПКУ
             Здесь кнопки вообще не должны быть disabled -->
           <input type="checkbox" class="save-checkbox save-checkbox_delete" id="checkbox{q}">
           <label for="checkbox{q}" class="save-checkbox__lable"></label>
@@ -116,20 +117,20 @@
 
           <!-- TODO: Create card in js -->
         </div>
-        
+
       </div>
     </div>
 
     <!-- Контейнер с прелоадером -->
     <div style="display: none;" class="preloader-container">
-      <i class="circle-preloader"></i>  
-      <p class="preloader-container__title">Идет поиск новостей...</p>         
+      <i class="circle-preloader"></i>
+      <p class="preloader-container__title">Идет поиск новостей...</p>
     </div>
 
     <!-- Контейнер, когда ничего не найдено -->
     <div style="display: none;" class="not-found-container">
       <img src="./images/not-found_v1.png" alt="Ничего не было найдено">
-      <h4 class="not-found-container__title">Ничего не найдено</h4> 
+      <h4 class="not-found-container__title">Ничего не найдено</h4>
       <p class="not-found-container__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
     </div>
 
@@ -146,7 +147,7 @@
         <a href="./index.html" class="footer__link footer__link_general-margin">Главная</a>
         <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
       </div>
-      
+
       <div class="footer__icon-wrapper">
         <a href="https://www.github.com" class="footer__link footer__link_larger-margin">
           <img src="./images/git.svg" alt="github">
@@ -155,13 +156,13 @@
           <img src="./images/fb.svg" alt="facebook" >
         </a>
       </div>
-      
+
     </div>
   </div>
 
   <!-- Основной скрипт -->
   <script src='js/secondPage.da633a8dc8d72b3618f9.js'></script>
 
-<script type="text/javascript" src="js/secondPage.da633a8dc8d72b3618f9.js"></script></body>
+</body>
 
 </html>
