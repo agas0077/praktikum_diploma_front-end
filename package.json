@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production rimraf dist && webpack --mode production",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
-    "deploy": "npm run start && scp -r ./dist/* praktikum@130.193.38.158:/home/agas0077/diploma-frontend",
-    "production": "cross-env NODE_ENV=production gh-pages -d dist"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch --devtool source-map",
+    "deploy": "npm run build && scp -r ./dist/* at-am@35.192.193.141:~/praktikum_diploma_front-end",
+    "production gh-pages": "cross-env NODE_ENV=production gh-pages -d dist"
   },
   "repository": {
     "type": "git",

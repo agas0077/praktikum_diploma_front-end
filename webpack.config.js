@@ -24,7 +24,7 @@ module.exports = {
         {
             test: /\.css$/i,
             use: [
-                isDev ? { loader: 'style-loader' } : 
+                isDev ? { loader: 'style-loader' } :
                 {
                     loader: MiniCssExtractPlugin.loader,
                     options: {},
@@ -39,12 +39,13 @@ module.exports = {
                 {
                     loader: 'file-loader',
                     options: {
-                        name: './images/[name].[ext]',
+                        name: './[name].[ext]',
                         esModule: false,
-                        output:'./images'
+                        outputPath: './images',
+                        publicPath: '../images'
                     }
                 },
-                {   
+                {
                     loader: 'image-webpack-loader',
                     options: {}
                 },
@@ -64,14 +65,14 @@ module.exports = {
             filename: 'css/[name].[contenthash].css',
         }),
         new HtmlWebpackPlugin({
-            inject: true,
+            inject: false,
             template: './src/mainPage/mainPage.html',
             filename: 'index.html',
             chunks: ['mainPage'],
             favicon: './src/images/favicon.png'
         }),
         new HtmlWebpackPlugin({
-            inject: true,
+            inject: false,
             template: './src/secondPage/secondPage.html',
             filename: 'secondPage.html',
             chunks: ['secondPage'],

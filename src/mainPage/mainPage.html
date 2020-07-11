@@ -1,6 +1,6 @@
   <!DOCTYPE html>
   <html lang="ru">
-    
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +10,13 @@
   </head>
 
   <body>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
 
-    <!-- <a href="./index.html">qwdqwdqwdqwd</a> -->
 
     <!-- Попап регистрации -->
     <!-- Надо ли делать валидацию? -->
-    <div style="display: none;" class="popup" id='reg-form'>
+    <!-- Рендерится через JS УДАЛИТЬ -->
+    <!-- <div style="display: none;" class="popup" id='reg-desktop-popup'>
       <div class="popup__content popup__content_general">
         <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title">Регистрация</h3>
@@ -25,7 +26,7 @@
           <p class="form__field-name">E-mail</p>
           <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
           <span style='display: none' id='error-email' class='error-message'></span>
-          
+
           <p class="form__field-name">Пароль</p>
           <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
           <span style='display: none' id='error-password' class='error-message'></span>
@@ -40,20 +41,21 @@
         <p class="switcher">или <span><button class="switcher switcher_button">Вход</button></span></p>
 
       </div>
-    </div>
+    </div> -->
 
     <!-- Попап входа -->
     <!-- Надо ли делать валидацию? -->
-    <div style="display: none;" class="popup" id='auth-form'>
+    <!-- Рендерится через JS УДАЛИТЬ -->
+    <!-- <div style="display: none;" class="popup" id='auth-desktop-popup'>
       <div class="popup__content popup__content_general">
         <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title">Вход</h3>
-        <form novalidate class="form" name="reg">
+        <form novalidate class="form" name="auth">
 
           <p class="form__field-name">E-mail</p>
           <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
           <span style='display: none' id='error-email' class='error-message'></span>
-          
+
           <p class="form__field-name">Пароль</p>
           <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
           <span style='display: none' id='error-password' class='error-message'></span>
@@ -64,16 +66,16 @@
         <p class="switcher">или <span><button class="switcher switcher_button">Зарегистрироваться</button></span></p>
 
       </div>
-    </div>
+    </div> -->
 
     <!-- Попап успешной регистрации -->
-    <div style="display: none;" class="popup" id='auth-form'>
+    <div style="display: none;" class="popup" id='sucesses-popup'>
       <div class="popup__content popup__content_sucesses">
         <img src="<%=require('../images/close.png')%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title popup__title_sucesses">Пользователь успешно зарегистрирован!</h3>
         <button class="switcher switcher_button">Выполнить вход</button>
       </div>
-    </div>  
+    </div>
 
     <!-- Мобильный попап входа -->
     <div style="display: none;" class="mobile-popup">
@@ -83,7 +85,7 @@
         <p class="form__field-name">E-mail</p>
         <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
         <span style='display: none' id='error-email' class='error-message'></span>
-        
+
         <p class="form__field-name">Пароль</p>
         <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
         <span style='display: none' id='error-password' class='error-message'></span>
@@ -102,7 +104,7 @@
         <p class="form__field-name">E-mail</p>
         <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
         <span style='display: none' id='error-email' class='error-message'></span>
-        
+
         <p class="form__field-name">Пароль</p>
         <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
         <span style='display: none' id='error-password' class='error-message'></span>
@@ -116,13 +118,13 @@
 
       <p class="switcher">или <span><button class="switcher switcher_button">Вход</button></span></p>
     </div>
-    
+
     <!-- Мобильное меню -->
     <div style="display: none;" class="mobile-menu">
       <div class="mobile-menu__content">
-        <a href="./index.html" class="mobile-menu__button">Главная</a> 
-        <a href="./secondPage.html" class="mobile-menu__button">Сохраненные статьи</a> 
-        <button type="button" class="mobile-menu__auth">Грета&nbsp;<img src="<%=require('../images/exit-white.png')%>"></button> 
+        <a href="./index.html" class="mobile-menu__button">Главная</a>
+        <a href="./secondPage.html" class="mobile-menu__button">Сохраненные статьи</a>
+        <button type="button" class="mobile-menu__auth">Грета&nbsp;<img src="<%=require('../images/exit-white.png')%>" alt="Выход"></button>
       </div>
     </div>
 
@@ -131,23 +133,25 @@
       <img alt="Фон" src="<%=require('../images/mainPage-background.png')%>" class="background-image">
 
       <!-- Стандартный хэдер -->
-      <div class="header header_white">
+      <!-- Рендерится через JS УДАЛИТЬ -->
+      <!-- <div class="header header_white">
         <div class="header__title header__title_white">NewsExplorer</div>
 
-        <div class="menu"> 
-          <a href="./index.html" class="menu__button menu__button_on-white menu__button_white">Главная</a> 
-          <a href="./secondPage.html" class="menu__button menu__button_off menu__button_white">Сохраненные статьи</a> 
-          <button type="button" class="menu__auth menu__auth_white">Авторизоваться</button> 
+        <div class="menu">
+          <a href="./index.html" class="menu__button menu__button_on-white menu__button_white">Главная</a>
+          <a href="./secondPage.html" class="menu__button menu__button_off menu__button_white">Сохраненные статьи</a>
+          <button style="display: none;" id="logout-button" type="button" class="menu__auth menu__auth_white">Грета &nbsp;<img src="<%=require('../images/exit-white.png')%>"></button>
+          <button id="login-button" type="button" class="menu__auth menu__auth_white">Авторизоваться</button>
         </div>
 
-      </div>
+      </div> -->
 
       <!-- Мобильный хедер -->
       <div class="mobile-header mobile-header_white">
         <div class="mobile-header__title">NewsExplorer</div>
         <!-- Кнопку пусть меняет js -->
         <img class="mobile-header__menu-button" src="<%=require('../images/menu-button-white.png')%>" alt="Кнопка меню">
-      </div>  
+      </div>
 
       <!-- Поиск -->
       <div class="search-container">
@@ -160,7 +164,7 @@
       </div>
 
     </div>
-    
+
     <!-- Основаня часть -->
     <div class="body">
 
@@ -168,16 +172,16 @@
       <div class="cards-container">
         <h3 class="cards-container__title">Результаты поиска</h3>
         <div class="cards-container__grid cards-container__grid_with-button">
-          
+
           <!-- Первая карточка собрана -->
           <div class="card">
-            
+
             <!-- Когда вошел, надо убирать появление сообщения и делать кнопку не disabled -->
             <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{n}">
             <label for="checkbox{n}" class="save-checkbox__lable"></label>
             <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
 
-            <img class="card__image" src="<%=require('../images/1.png')%>">
+            <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
             <p class="card__date">2 августа, 2019</p>
             <h3 class="card__title">Национальное достояние – парки</h3>
             <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
@@ -186,13 +190,13 @@
           </div>
 
           <div class="card">
-            
+
             <!-- Когда вошел, надо убирать появление сообщения и делать кнопку не disabled -->
             <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{й}">
             <label for="checkbox{й}" class="save-checkbox__lable"></label>
             <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
 
-            <img class="card__image" src="<%=require('../images/1.png')%>">
+            <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
             <p class="card__date">2 августа, 2019</p>
             <h3 class="card__title">Национальное достояние – парки</h3>
             <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
@@ -201,13 +205,13 @@
           </div>
 
           <div class="card">
-            
+
             <!-- Когда вошел, надо убирать появление сообщения и делать кнопку не disabled -->
             <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{ц}">
             <label for="checkbox{ц}" class="save-checkbox__lable"></label>
             <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
 
-            <img class="card__image" src="<%=require('../images/1.png')%>">
+            <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
             <p class="card__date">2 августа, 2019</p>
             <h3 class="card__title">Национальное достояние – парки</h3>
             <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
@@ -215,21 +219,21 @@
 
           </div>
 
-         
+
         </div>
         <button class="cards-container__button">Показать еще</button>
       </div>
 
       <!-- Контейнер с прелоадером -->
       <div style="display: none;" class="preloader-container">
-        <i class="circle-preloader"></i>  
-        <p class="preloader-container__title">Идет поиск новостей...</p>         
+        <i class="circle-preloader"></i>
+        <p class="preloader-container__title">Идет поиск новостей...</p>
       </div>
 
       <!-- Контейнер, когда ничего не найдено -->
       <div style="display: none;" class="not-found-container">
         <img src="<%=require('../images/not-found_v1.png')%>" alt="Ничего не было найдено">
-        <h4 class="not-found-container__title">Ничего не найдено</h4> 
+        <h4 class="not-found-container__title">Ничего не найдено</h4>
         <p class="not-found-container__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
       </div>
 
@@ -247,7 +251,7 @@
           <p class="about-container__subtitle">
             Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.
           </p>
-        </div> 
+        </div>
       </div>
 
     </div>
@@ -255,7 +259,7 @@
     <!-- Футер -->
     <div class="footer">
       <p class="footer__title">
-        &copy 2020 Supersite, Powered by News API
+        &copy; 2020 Supersite, Powered by News API
       </p>
       <div class="footer__links">
 
@@ -263,7 +267,7 @@
           <a href="./index.html" class="footer__link footer__link_general-margin">Главная</a>
           <a href="https://praktikum.yandex.ru/" class="footer__link footer__link_general-margin">Яндекс.Практикум</a>
         </div>
-        
+
         <div class="footer__icon-wrapper">
           <a href="https://www.github.com" class="footer__link footer__link_larger-margin">
             <img src="<%=require('../images/git.svg')%>" alt="github">
@@ -272,7 +276,7 @@
             <img src="<%=require('../images/fb.svg')%>" alt="facebook" >
           </a>
         </div>
-        
+
       </div>
     </div>
 
@@ -280,5 +284,5 @@
     <script src='<%= htmlWebpackPlugin.files.js %>'></script>
 
   </body>
-  
+
   </html>

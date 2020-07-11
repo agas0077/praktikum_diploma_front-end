@@ -1,9 +1,10 @@
 @import url(./_button/switcher_button.css);
 
 .switcher {
-    font-size: 14px;
-    line-height: 17px;
-    font-family: Inter;
-    align-self: center;
-    margin: 0;
+  font-size: 14px;
+  line-height: 17px;
+  font-family: Inter;
+  align-self: center;
+  margin: 0;
+  cursor: pointer;
 }
