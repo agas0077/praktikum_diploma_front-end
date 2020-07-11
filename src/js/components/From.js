@@ -3,22 +3,21 @@ export default class From {
   defineFormByButton(buttonId) {
     switch (buttonId) {
       case 'auth-button':
-        return 'auth'
+        return 'auth';
 
       case 'reg-button':
-        return 'reg'
-
+        return 'reg';
     }
   }
 
   getCredentials(buttonId) {
-    const form = this.defineFormByButton(buttonId)
+    const form = this.defineFormByButton(buttonId);
     if (form === 'auth') {
       return {
         form,
         email: document.forms[form].email.value,
         password: document.forms[form].password.value,
-      }
+      };
     }
     if (form === 'reg') {
       return {
@@ -26,8 +25,7 @@ export default class From {
         email: document.forms[form].email.value,
         password: document.forms[form].password.value,
         name: document.forms[form].name.value,
-      }
+      };
     }
   }
-
 }

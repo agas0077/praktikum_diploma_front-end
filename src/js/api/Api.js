@@ -5,6 +5,10 @@ export default class Api {
     this.serverAdress = serverAdress;
   }
 
+  isSigned() {
+    fetch()
+  }
+
   signUp(credentials) {
     const { email, password, name } = credentials;
     console.log(email, password, name);
@@ -48,12 +52,16 @@ export default class Api {
         return res.json();
       })
       .then((res) => {
-        if (res.ok) return res;
+        if (res.ok) {
+          return {
+            status: 1,
+          };
+        }
         return Promise.reject(res);
       })
-      .catch((err) => {
-        // TODO Потом надо будет сделать так, чтобы сообщение об ошибке появлялось над кнопкой
-        alert(err.message);
-      });
+      .catch((err) => ({
+        status: 0,
+        message: err.message,
+      }));
   }
 }

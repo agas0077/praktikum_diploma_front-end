@@ -37,10 +37,23 @@ document.addEventListener('click', (event) => {
     switch (toSubmit.form) {
       case 'auth':
         api.signIn(toSubmit)
+          .then((res) => {
+            switch (res.status) {
+              case 1:
+                popup.closePopup()
+                header.render();
+                console.log(document.cookie);
+
+              case 0:
+
+            }
+          })
         break;
 
       case 'reg':
         api.signUp(toSubmit)
+          .then((res) => {
+          })
     }
   }
 });

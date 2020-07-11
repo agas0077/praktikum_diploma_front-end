@@ -13,5 +13,6 @@
       "default-case":"off",
       "no-alert":"off",
       "no-console":"off",
+      "no-underscore-dangle":"off",
     }
 }
