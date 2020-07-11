@@ -42,7 +42,7 @@ document.addEventListener('click', (event) => {
               case 1:
                 popup.closePopup()
                 header.render();
-                console.log(document.cookie);
+                console.log(document.cookie);;;
 
               case 0:
 
