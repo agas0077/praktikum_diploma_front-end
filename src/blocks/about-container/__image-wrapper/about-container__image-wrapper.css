@@ -1,6 +1,6 @@
 .about-container__image-wrapper {
-    margin: auto auto; 
     width: calc(100%/3);
+    margin: auto 0;
 }
 
 @media screen and (max-width: 560px) {
@@ -8,4 +8,10 @@
         width: 80%;
         margin-bottom: 20px;
     }
+}
+
+@media screen and (max-width:320px) {
+  .about-container__image-wrapper {
+      margin-bottom: 24px;
+  }
 }

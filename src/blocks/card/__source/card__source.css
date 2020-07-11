@@ -2,7 +2,7 @@
     color: #B6BCBF;
     letter-spacing: 0.4px;
     text-transform: uppercase;
-    font-family: "Roboto Slab";
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 16px;
     line-height: 20px;
@@ -11,6 +11,6 @@
 
 @media screen and (max-width: 768px) {
     .card__source {
-        margin: 0 16px 16px;  
+        margin: 0 16px 16px;
     }
 }
