@@ -5,15 +5,13 @@ export default class Api {
     this.serverAdress = serverAdress;
   }
 
-  isSigned() {
-    fetch()
-  }
-
   signUp(credentials) {
     const { email, password, name } = credentials;
     console.log(email, password, name);
     return fetch(`${this.serverAdress}/signup`, {
       method: 'POST',
+      credentials: 'include',
+
       headers: {
         'Content-Type': 'application/json',
       },
@@ -37,8 +35,9 @@ export default class Api {
 
   signIn(credentials) {
     const { email, password } = credentials;
-    return fetch(`${this.serverAdress}/signin`, {
+    return fetch('http://localhost:3000/signin', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -52,16 +51,24 @@ export default class Api {
         return res.json();
       })
       .then((res) => {
-        if (res.ok) {
-          return {
-            status: 1,
-          };
-        }
+        if (res.ok) return res;
         return Promise.reject(res);
       })
-      .catch((err) => ({
-        status: 0,
-        message: err.message,
-      }));
+      .catch((err) => err.message);
+  }
+
+  signOut() {
+    return fetch(`${this.serverAdress}/signout`, {
+      credentials: 'include',
+    })
+      .then((res) => res);
+  }
+
+  someGet() {
+    return fetch(`${this.serverAdress}/users/me`, {
+      credentials: 'include',
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res));
   }
 }

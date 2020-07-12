@@ -41,11 +41,11 @@ export default class Popup {
 
             <p class="form__field-name">E-mail</p>
             <input required type="email" id='email' name="email" class="form__input form__input_valid" placeholder="Введите свой E-mail">
-            <span style='display: none' id='error-email' class='error-message'></span>
+            <span style="display: none" id='error-password' class='error-message'>Чирик бум-бум</span>
 
             <p class="form__field-name">Пароль</p>
             <input required type="password" id='password' name="password" class="form__input form__input_valid" placeholder="Введите пароль">
-            <span style='display: none' id='error-password' class='error-message'></span>
+            <span style="display: none" id='error-password' class='error-message'>Чирик бум-бум</span>
 
             <button type='submit' id='auth-button' class="form__button">Войти</button>
           </form>
@@ -84,5 +84,7 @@ export default class Popup {
   closePopup() {
     document.querySelector('.popup').remove()
   }
+
+
 
 }

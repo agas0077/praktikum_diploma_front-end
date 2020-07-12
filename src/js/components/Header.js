@@ -1,7 +1,9 @@
 export default class Header {
-  constructor(page) {
+  constructor(page, cookie) {
     this.page = page;
-    this.isLogged = false;
+    this.cookie = cookie;
+    this.isLogged = this.cookie.getACookieValue('isLogged') === '1' ? true : false;
+    this.name = this.cookie.getACookieValue('name')
   }
 
   _renderMain() {
@@ -22,7 +24,7 @@ export default class Header {
       <div class="menu">
         <a href="./index.html" class="menu__button menu__button_on-${this._blackOrWhite()} menu__button_${this._blackOrWhite()}">Главная</a>
         <a href="./secondPage.html" class="menu__button menu__button_off menu__button_${this._blackOrWhite()}">Сохраненные статьи</a>
-        <button id="logout-button" type="button" class="menu__auth menu__auth_${this._blackOrWhite()}">Грета &nbsp;<img src="<%=require('../images/exit-${this._blackOrWhite()}.png')%>"></button>
+        <button id="logout-button" type="button" class="menu__auth menu__auth_${this._blackOrWhite()}">${this.name} &nbsp;<img id="logout-image" src="./images/exit-${this._blackOrWhite()}.png"></button>
       </div>
     `;
   }
@@ -36,12 +38,16 @@ export default class Header {
     `;
   }
 
-  _isLoggedOrNot() {
-    // Доработать
-    document.cookie.jwt ? this.isLogged = true : this.isLogged = fasle;
+  _removeHeader() {
+    if (document.querySelector('.header')) {
+      document.querySelector('.header').remove();
+    }
   }
 
   render() {
+    this._removeHeader()
+    this.isLogged = this.cookie.getACookieValue('isLogged') === '1' ? true : false;
+    this.name = this.cookie.getACookieValue('name')
     switch (this.page) {
       case 'main':
         document.querySelector('.header-container').insertAdjacentHTML('afterbegin', this._renderMain());
