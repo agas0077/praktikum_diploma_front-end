@@ -1,0 +1,33 @@
+.cards-container__button {
+    background: #FFFFFF;
+    border-radius: 80px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    align-self: center;
+    text-align: center;
+    width: 288px;
+    height: 64px;
+    border: none;
+}
+
+.cards-container__button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.cards-container__button:active {
+    transform: scale(.97, .97);
+}
+
+.cards-container__button:focus {
+    outline: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .cards-container__button {
+       width: 240px;
+       height: 56px;
+    }
+}

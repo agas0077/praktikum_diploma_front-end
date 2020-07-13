@@ -1,0 +1,1 @@
+require('./secondPage.css')

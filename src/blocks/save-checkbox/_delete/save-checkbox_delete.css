@@ -1,0 +1,12 @@
+.save-checkbox_delete+label::after {
+    background-image: url(../../../images/trash.png);
+}
+
+.save-checkbox_delete+label:hover::after {
+    background-image: url(../../../images/trash-hover.png);
+}
+
+/* Возможно будет не нужен */
+.save-checkbox_delete:checked+label::after {
+    background-image: url(../../../images/trash.png);
+}

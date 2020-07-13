@@ -1,0 +1,9 @@
+.footer__link_larger-margin {
+    margin-left: 45px;
+}
+
+@media screen and (max-width: 768px) {
+    .footer__link_larger-margin {
+        margin-left: 25px;
+    }
+}

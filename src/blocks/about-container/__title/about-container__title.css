@@ -1,0 +1,14 @@
+.about-container__title {
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    line-height: 46px;
+    margin: 0 0 24px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 560px) {
+    .about-container__title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+}

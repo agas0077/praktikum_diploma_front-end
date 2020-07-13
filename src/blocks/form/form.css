@@ -1,0 +1,10 @@
+@import url(./__button/form__button.css);
+@import url(./__field-name/form__field-name.css);
+@import url(./__input/form__input.css);
+
+.form {
+  margin-top: 22px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}

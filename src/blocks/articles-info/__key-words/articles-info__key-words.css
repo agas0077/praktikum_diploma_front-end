@@ -1,0 +1,14 @@
+@import url(./_bold/articles-info__key-words_bold.css);
+
+.articles-info__key-words {
+    font-size: 18px;
+    line-height: 24px;
+    color: #1a1b22;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .articles-info__key-words {
+        font-size: 14px;
+    }
+}

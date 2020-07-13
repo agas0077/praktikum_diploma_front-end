@@ -1,0 +1,32 @@
+@import url(./__image/about-container__image.css);
+@import url(./__text/about-container__text.css);
+@import url(./__title/about-container__title.css);
+@import url(./__subtitle/about-container__subtitle.css);
+@import url(./__image-wrapper/about-container__image-wrapper.css);
+
+.about-container {
+    display: flex;
+    padding: 80px calc(100%/14) 80px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-container {
+        padding: 40px 40px 61px;
+
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 40px 31px;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+  .about-container {
+      padding: 32px 16px 49px;
+  }
+}

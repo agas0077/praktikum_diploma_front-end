@@ -1,0 +1,24 @@
+@import url(./_white/mobile-header_white.css);
+@import url(./_black/mobile-header_black.css);
+@import url(./_open/mobile-header_open.css);
+@import url(./__title/mobile-header__title.css);
+
+@media screen and (max-width: 550px) {
+    .mobile-header {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        height: 56px;
+        align-items: center;
+
+    }
+}
+
+@media screen and (min-width: 551px) {
+    .mobile-header {
+        display: none;
+    }
+}
+

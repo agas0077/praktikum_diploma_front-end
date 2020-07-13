@@ -1,0 +1,18 @@
+@import url(./_general/popup__content_general.css);
+@import url(./_sucesses/popup__content_sucesses.css);
+
+.popup__content {
+  width: 430px;
+  min-height: 182px;
+  background-color: #fff;
+  border-radius: 16px;
+  position: relative;
+  box-sizing: border-box;
+
+}
+
+@media screen and (max-width: 540px) {
+  .popup__content {
+    width: calc(100% - 60px);
+  }
+}

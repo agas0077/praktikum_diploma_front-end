@@ -1,0 +1,24 @@
+.background-image {
+    max-height: 576px;
+    object-fit: cover; 
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+@media screen and (max-width: 768px) {
+    .background-image {
+        max-height: 400px;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .background-image {
+        max-height: 536px;
+        object-fit: cover;
+        height: 100%;
+        /* top: -50px;
+        left: 10px; */
+    }
+}

@@ -1,0 +1,27 @@
+@import url(./__button/search__button.css);
+@import url(./__field/search__field.css);
+
+.search {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 100px;
+    min-height: 64px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: calc(100%/15);
+}
+
+@media screen and (max-width: 768px) {
+    .search {
+        min-height: 56px;
+        margin-bottom: calc(100vw/17);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .search {
+        flex-direction: column;
+        background: none;
+        margin-bottom: 0 0 32px;
+    }
+}

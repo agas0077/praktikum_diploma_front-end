@@ -1,0 +1,21 @@
+@import url(./_larger-margin/footer__link_larger-margin.css);
+@import url(./_general-margin/footer__link_general-margin.css);
+
+.footer__link {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 560px) {
+    .footer__link {
+        margin: 0 0 15px;
+    }
+
+    .footer__link:last-of-type {
+        margin: 0;
+        align-items: flex-start;
+    }
+}
+

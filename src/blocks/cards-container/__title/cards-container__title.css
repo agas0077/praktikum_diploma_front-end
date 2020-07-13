@@ -1,0 +1,20 @@
+.cards-container__title {
+    margin: 0 0 64px;
+    font-family: "Roboto Slab", Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    line-height: 46px;
+}
+
+@media screen and (max-width: 768px) {
+    .cards-container__title {
+        font-size: 30px;
+        line-height: 34px;
+        margin: 0 0 32px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards-container__title {
+        margin: 0 0 24px;
+    }
+}

@@ -1,0 +1,11 @@
+.footer__icon-wrapper {
+    display: flex;
+}
+
+@media screen and (max-width: 560px) {
+    .footer__icon-wrapper {
+        align-self: start;
+        width: 70px;
+        justify-content: space-between;
+    }
+}

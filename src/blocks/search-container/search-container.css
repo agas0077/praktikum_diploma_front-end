@@ -1,0 +1,14 @@
+@import url(./__title/search-container__title.css);
+@import url(./__subtitle/search-container__subtitle.css);
+
+.search-container {
+    color: #fff;
+    margin: calc(100%/25) 0 0;
+}
+
+@media screen and (max-width: 768px) {
+    .search-container {
+        margin: calc(100%/20) 16px 0;
+        max-height: 400px;
+    }
+}

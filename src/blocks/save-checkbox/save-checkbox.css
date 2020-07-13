@@ -1,0 +1,49 @@
+@import url(./__message/save-checkbox__message.css);
+@import url(./__lable/save-checkbox__lable.css);
+@import url(./_add/save-checkbox_add.css);
+@import url(./_delete/save-checkbox_delete.css);
+
+.save-checkbox {
+    position: absolute;
+    top: 24px;
+    right: 24px; 
+    z-index: -1;
+    opacity: 0;
+}
+
+.save-checkbox+label {
+    top: 24px;
+    right: 24px;
+    border-radius: 8px;
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+
+.save-checkbox+label::after {
+    cursor: pointer;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+}
+
+.save-checkbox__lable:hover ~ .save-checkbox__message.save-checkbox__message_show {
+    display: flex;
+}
+
+.save-checkbox__lable:hover ~ .save-checkbox__message.save-checkbox__message_hide {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) { 
+    .save-checkbox__lable:hover ~ .save-checkbox__message.save-checkbox__message_hide {
+        display: none;
+    }
+    .save-checkbox+label {
+        top: 8px;
+        right: 8px;
+    }
+}
