@@ -1,7 +1,4 @@
 export default class From {
-
-  // validation(formName)
-
   defineFormByButton(buttonId) {
     switch (buttonId) {
       case 'auth-button':

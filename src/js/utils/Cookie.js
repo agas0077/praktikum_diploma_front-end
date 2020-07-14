@@ -1,5 +1,4 @@
 export default class Cookie {
-
   getACookieValue(cookieName) {
     const arr = document.cookie.split(/;\s/);
     const whatToFind = new RegExp(`^${cookieName}`);
@@ -12,5 +11,4 @@ export default class Cookie {
     toReturn = decodeURIComponent(toReturn);
     return toReturn;
   }
-
 }

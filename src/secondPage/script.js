@@ -1,1 +1,1 @@
-require('./secondPage.css')
+require('./secondPage.css');

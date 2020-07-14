@@ -1,7 +1,9 @@
+@import url(./_api/error-message_api.css);
+@import url(./_input/error-message_input.css);
+
 .error-message {
-    color: red;
-    font-size: 12px;
-    line-height: 15px;
-    font-family: "Inter", Arial, Helvetica, sans-serif;
-    align-self: center;
+  color: red;
+  font-size: 12px;
+  line-height: 15px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
 }
