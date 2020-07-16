@@ -1,16 +1,19 @@
 export default class From {
-  defineFormByButton(buttonId) {
+  _defineFormByButton(buttonId) {
     switch (buttonId) {
       case 'auth-button':
         return 'auth';
 
       case 'reg-button':
         return 'reg';
+
+      case 'search-button':
+        return 'search';
     }
   }
 
-  getCredentials(buttonId) {
-    const form = this.defineFormByButton(buttonId);
+  getDataFromForm(buttonId) {
+    const form = this._defineFormByButton(buttonId);
     if (form === 'auth') {
       return {
         form,
@@ -26,5 +29,12 @@ export default class From {
         name: document.forms[form].name.value,
       };
     }
+    if (form === 'search') {
+      return {
+        form,
+        key: document.forms[form].searchField.value,
+      };
+    }
   }
+
 }

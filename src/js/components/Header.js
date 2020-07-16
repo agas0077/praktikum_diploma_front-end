@@ -118,8 +118,7 @@ export default class Header {
     this._removeHeader();
     this.isLogged = this.cookie.getACookieValue('isLogged') === '1';
     this.name = this.cookie.getACookieValue('name');
-    const windowWidth = window.innerWidth >= 550;
-    console.log(windowWidth);
+    const windowWidth = window.innerWidth > 550;
     switch (windowWidth) {
       case true:
         document.querySelector('.header-container').insertAdjacentHTML('afterbegin', this._renderMainHeader());

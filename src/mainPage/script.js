@@ -1,7 +1,6 @@
 import './mainPage.css';
 
 // Импорт классов
-import { pop } from 'core-js/fn/array';
 import Api from '../js/api/Api';
 import Popup from '../js/components/Popup';
 import Header from '../js/components/Header';
@@ -9,9 +8,12 @@ import From from '../js/components/From';
 import Cookie from '../js/utils/Cookie';
 import FormValidation from '../js/components/FormValidation';
 import ErrorHandler from '../js/api/ErrorHandler';
+import NewsApi from '../js/api/NewsApi';
+import Searcher from '../js/components/Searcher';
 
 // Константы
-const allPossibleForms = ['reg', 'auth'];
+const allPossibleForms = ['reg', 'auth', 'search'];
+const allPossibleSearchContainers = ['cards-container', 'preloader-container', 'not-found-container'];
 
 // Переменные
 let whatPopupIsOpened;
@@ -26,6 +28,8 @@ const popup = new Popup(validation);
 const header = new Header('main', cookie);
 const form = new From();
 const errorHandler = new ErrorHandler();
+const newsApi = new NewsApi();
+const searcher = new Searcher(allPossibleSearchContainers);
 
 
 // Рендер хеддера
@@ -37,13 +41,13 @@ window.addEventListener('resize', () => {
 
 // Слушатели
 document.addEventListener('click', (event) => {
-  // Слушатель открытия десктопного попапа входа
+  // Открытие десктопного попапа входа
   if (event.target.id === 'login-button') {
     popup.openPopup('auth-desktop-popup');
     whatPopupIsOpened = '.popup';
   }
 
-  // Слушатель закрытия десктопного попапа
+  // Закрытие десктопного попапа
   if (event.target.classList.contains('popup__close')) {
     popup.closePopup('.popup');
     whatPopupIsOpened = '';
@@ -57,7 +61,7 @@ document.addEventListener('click', (event) => {
   // Сабмит попапов
   if (event.target.classList.contains('form__button')) {
     event.preventDefault();
-    const toSubmit = form.getCredentials(event.target.id);
+    const toSubmit = form.getDataFromForm(event.target.id);
     switch (toSubmit.form) {
       case 'auth':
         api.signIn(toSubmit)
@@ -74,7 +78,6 @@ document.addEventListener('click', (event) => {
       case 'reg':
         api.signUp(toSubmit)
           .then((res) => {
-            console.log(res);
             if (res.status === 200) {
               popup.closePopup(whatPopupIsOpened);
               switch (whatPopupIsOpened) {
@@ -129,8 +132,22 @@ document.addEventListener('click', (event) => {
     whatPopupIsOpened = '.mobile-popup';
   }
 
+  // Сабмит поиска новостей
   if (event.target.classList.contains('search__button')) {
-    api.someGet();
+    event.preventDefault();
+    searcher.removeContainerFromDOM();
+    const whatToSearch = form.getDataFromForm('search-button');
+    searcher.addContainerToDOM('preloader-container');
+    newsApi.getNews(whatToSearch.key)
+      .then((res) => {
+        searcher.setInitialCondition(res.res.articles, res.key);
+        searcher.addContainerToDOM(res.res.articles.length > 0 ? 'cards-container' : 'not-found-container');
+        searcher.addThreeCards();
+      });
+  }
+  // Показать еще
+  if (event.target.classList.contains('cards-container__button')) {
+    searcher.addThreeCards();
   }
 });
 

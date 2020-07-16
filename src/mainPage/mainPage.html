@@ -12,14 +12,6 @@
   <body>
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css %>">
 
-    <!-- Мобильный попап входа -->
-
-
-    <!-- Мобильный попап регистрации -->
-    
-
-
-
     <!-- Хэдер -->
     <div class="header-container">
       <img alt="Фон" src="<%=require('../images/mainPage-background.png')%>" class="background-image">
@@ -28,11 +20,10 @@
       <div class="search-container">
         <h1 class="search-container__title">Что в мире творится?</h1>
         <p class="search-container__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
-        <div class="search">
-          <input required class="search__field" name="search" placeholder="Введите тему новостей">
-          <span style="display: none;" id='error-search' class='error-message'>awdawd</span>
+        <form class="search" name="search">
+          <input required class="search__field" name="searchField" placeholder="Введите тему новостей">
           <button class="search__button" for="search" type="submit">Искать</button>
-        </div>
+        </form>
       </div>
 
     </div>
@@ -40,67 +31,36 @@
     <!-- Основаня часть -->
     <div class="body">
 
-      <!-- Контейнер с карточками -->
+      <!-- Контейнер с карточками
       <div class="cards-container">
         <h3 class="cards-container__title">Результаты поиска</h3>
         <div class="cards-container__grid cards-container__grid_with-button">
 
-          <!-- Первая карточка собрана -->
-          <div class="card">
+          <a class="card" href="https://www.yandex.ru">
+            <div class="card__main-part">
+              <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{n}">
+              <label for="checkbox{n}" class="save-checkbox__lable"></label>
+              <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
 
-            <!-- Когда вошел, надо убирать появление сообщения и делать кнопку не disabled -->
-            <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{n}">
-            <label for="checkbox{n}" class="save-checkbox__lable"></label>
-            <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
+              <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
+              <p class="card__date">2 августа, 2019</p>
+              <h3 class="card__title">Национальное достояние – парки парки парки</h3>
+              <p class="card__text">В 2016 году годня каждый может приобщиться к природе.</p>
+            </div>
 
-            <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние – парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
             <p class="card__source">ЛЕНТА.РУ</p>
 
-          </div>
-
-          <div class="card">
-
-            <!-- Когда вошел, надо убирать появление сообщения и делать кнопку не disabled -->
-            <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{й}">
-            <label for="checkbox{й}" class="save-checkbox__lable"></label>
-            <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
-
-            <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние – парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">ЛЕНТА.РУ</p>
-
-          </div>
-
-          <div class="card">
-
-            <!-- Когда вошел, надо убирать появление сообщения и делать кнопку не disabled -->
-            <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{ц}">
-            <label for="checkbox{ц}" class="save-checkbox__lable"></label>
-            <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
-
-            <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
-            <p class="card__date">2 августа, 2019</p>
-            <h3 class="card__title">Национальное достояние – парки</h3>
-            <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-            <p class="card__source">ЛЕНТА.РУ</p>
-
-          </div>
-
+          </a>
 
         </div>
         <button class="cards-container__button">Показать еще</button>
-      </div>
+      </div> -->
 
       <!-- Контейнер с прелоадером -->
-      <div style="display: none;" class="preloader-container">
+      <!-- <div style="display: none;" class="preloader-container">
         <i class="circle-preloader"></i>
         <p class="preloader-container__title">Идет поиск новостей...</p>
-      </div>
+      </div> -->
 
       <!-- Контейнер, когда ничего не найдено -->
       <div style="display: none;" class="not-found-container">

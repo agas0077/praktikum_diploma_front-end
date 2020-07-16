@@ -59,12 +59,4 @@ export default class Api {
     })
       .then((res) => res);
   }
-
-  someGet() {
-    return fetch(`${this.serverAdress}/users/me`, {
-      credentials: 'include',
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  }
 }

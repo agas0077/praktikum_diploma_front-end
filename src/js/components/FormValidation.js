@@ -1,7 +1,7 @@
 const eValidator = require('email-validator');
 
 // Чтобы работал, надо в качестве аргумента передать массив всех возможно-существующих форм
-export default class Form_validation {
+export default class FormValidation {
   constructor(formsNamesArray) {
     formsNamesArray.forEach((item) => {
       this[item] = item;
