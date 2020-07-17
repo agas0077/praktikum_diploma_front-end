@@ -1,15 +1,16 @@
-import { all } from 'core-js/fn/promise';
-
-const defaultImg = require('../../images/defaultNewsImage.jpg');
 const notFound = require('../../images/not-found_v1.png');
+const defaultImg = require('../../images/defaultNewsImage.jpg');
 
 export default class Searcher {
-  constructor(allContainers) {
+  constructor(card, allContainers) {
     this.allContainers = allContainers;
     this.articlesArr = '';
     this.keyWord = '';
     this.stoppedAtIndex = -1;
     this.numOfArticles = 0;
+    this.card = card;
+    this.createdCards = [];
+    this.articlesToSave = [];
   }
 
   _rednderCardsContainer() {
@@ -19,32 +20,6 @@ export default class Searcher {
         <div class="cards-container__grid cards-container__grid_with-button"></div>
         <button class="cards-container__button">Показать еще</button>
       </div>
-    `;
-  }
-
-  _renderCard(
-    url,
-    imgUrl,
-    pubDate,
-    title,
-    description,
-    source,
-  ) {
-    return `
-      <a href="${url}" target="_blank" class="card">
-        <div class="card__main-part">
-          <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{n}">
-          <label for="checkbox{n}" class="save-checkbox__lable"></label>
-          <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
-
-          <img class="card__image" src="${imgUrl}" alt="Изображение новости">
-          <p class="card__date">${pubDate}</p>
-          <h3 class="card__title">${title}</h3>
-          <p class="card__text">${description}</p>
-        </div>
-        <p class="card__source">${source}</p>
-
-      </a>
     `;
   }
 
@@ -59,26 +34,6 @@ export default class Searcher {
     const year = date.match(/\d{4}/);
     date = `${dayAndMonth}, ${year}`;
     return date;
-  }
-
-  _renderCards() {
-    const createdCards = [];
-    let i = 0;
-    while (i < 3 && this.stoppedAtIndex + 1 !== this.numOfArticles) {
-      const item = this.articlesArr[this.stoppedAtIndex + 1];
-      const card = this._renderCard(
-        item.url,
-        item.urlToImage ? item.urlToImage : defaultImg,
-        this._transformDate(item.publishedAt),
-        item.title,
-        item.description,
-        item.source.name,
-      );
-      createdCards.push(card);
-      this.stoppedAtIndex++;
-      i++;
-    }
-    return createdCards;
   }
 
   _renderPreloader() {
@@ -142,12 +97,41 @@ export default class Searcher {
     });
   }
 
+  renderCards() {
+    let i = 0;
+    while (i < 3 && this.stoppedAtIndex + 1 !== this.numOfArticles) {
+      const item = this.articlesArr[this.stoppedAtIndex + 1];
+      const params = [
+        item.url,
+        item.urlToImage ? item.urlToImage : defaultImg,
+        this._transformDate(item.publishedAt),
+        item.title,
+        item.description,
+        item.source.name,
+      ];
+      const card = this.card.renderCard(...params);
+      this.createdCards.push(card);
+      this.articlesToSave.push(params);
+      this.stoppedAtIndex++;
+      i++;
+    }
+  }
+
   addThreeCards() {
-    const cardsArray = this._renderCards();
-    cardsArray.forEach((i) => {
-      document.querySelector('.cards-container__grid').insertAdjacentHTML('beforeend', i);
-    });
+    this.renderCards();
+    let i = this.stoppedAtIndex - 3 < 0 ? 0 : this.stoppedAtIndex - 2;
+    while (i < this.stoppedAtIndex + 1) {
+      document.querySelector('.cards-container__grid').insertAdjacentHTML('beforeend', this.createdCards[i]);
+      i++;
+    }
     this.hideAddMoreButton();
+  }
+
+  getDisplayedCards() {
+    return {
+      cards: this.articlesToSave,
+      keyWord: this.keyWord,
+    };
   }
 
   setInitialCondition(articlesArr, keyWord) {
@@ -155,6 +139,8 @@ export default class Searcher {
     this.numOfArticles = articlesArr.length;
     this.keyWord = keyWord;
     this.stoppedAtIndex = -1;
+    this.createdCards = [];
+    this.articlesToSave = [];
     this.removeContainerFromDOM();
   }
 }

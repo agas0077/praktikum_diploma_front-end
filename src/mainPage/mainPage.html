@@ -22,6 +22,7 @@
         <p class="search-container__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
         <form class="search" name="search">
           <input required class="search__field" name="searchField" placeholder="Введите тему новостей">
+          <span class="button-error-message">Нужно ввести ключевое слово</span>
           <button class="search__button" for="search" type="submit">Искать</button>
         </form>
       </div>
@@ -30,45 +31,6 @@
 
     <!-- Основаня часть -->
     <div class="body">
-
-      <!-- Контейнер с карточками
-      <div class="cards-container">
-        <h3 class="cards-container__title">Результаты поиска</h3>
-        <div class="cards-container__grid cards-container__grid_with-button">
-
-          <a class="card" href="https://www.yandex.ru">
-            <div class="card__main-part">
-              <input disabled type="checkbox" class="save-checkbox save-checkbox_add" id="checkbox{n}">
-              <label for="checkbox{n}" class="save-checkbox__lable"></label>
-              <div class="save-checkbox__message save-checkbox__message_show">Войдите, чтобы сохранить</div>
-
-              <img class="card__image" src="<%=require('../images/1.png')%>" alt="Изображение новости">
-              <p class="card__date">2 августа, 2019</p>
-              <h3 class="card__title">Национальное достояние – парки парки парки</h3>
-              <p class="card__text">В 2016 году годня каждый может приобщиться к природе.</p>
-            </div>
-
-            <p class="card__source">ЛЕНТА.РУ</p>
-
-          </a>
-
-        </div>
-        <button class="cards-container__button">Показать еще</button>
-      </div> -->
-
-      <!-- Контейнер с прелоадером -->
-      <!-- <div style="display: none;" class="preloader-container">
-        <i class="circle-preloader"></i>
-        <p class="preloader-container__title">Идет поиск новостей...</p>
-      </div> -->
-
-      <!-- Контейнер, когда ничего не найдено -->
-      <div style="display: none;" class="not-found-container">
-        <img src="<%=require('../images/not-found_v1.png')%>" alt="Ничего не было найдено">
-        <h4 class="not-found-container__title">Ничего не найдено</h4>
-        <p class="not-found-container__subtitle">К сожалению по вашему запросу ничего не найдено.</p>
-      </div>
-
 
       <!-- Контейнер с информацией о пользователе -->
       <div class="about-container">

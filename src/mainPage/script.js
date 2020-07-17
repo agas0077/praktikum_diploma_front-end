@@ -10,10 +10,14 @@ import FormValidation from '../js/components/FormValidation';
 import ErrorHandler from '../js/api/ErrorHandler';
 import NewsApi from '../js/api/NewsApi';
 import Searcher from '../js/components/Searcher';
+import Card from '../js/components/Card';
+import SearchValidation from '../js/components/SearchValidation';
 
 // Константы
-const allPossibleForms = ['reg', 'auth', 'search'];
+const allPossiblePopupForms = ['reg', 'auth'];
 const allPossibleSearchContainers = ['cards-container', 'preloader-container', 'not-found-container'];
+const searchForm = document.forms.search;
+const errorSpan = document.querySelector('.button-error-message');
 
 // Переменные
 let whatPopupIsOpened;
@@ -22,14 +26,16 @@ let whatPopupIsOpened;
 
 // Поменять на mesto4
 const api = new Api('http://localhost:3000');
-const validation = new FormValidation(allPossibleForms);
+const validation = new FormValidation(allPossiblePopupForms);
 const cookie = new Cookie();
 const popup = new Popup(validation);
 const header = new Header('main', cookie);
 const form = new From();
 const errorHandler = new ErrorHandler();
 const newsApi = new NewsApi();
-const searcher = new Searcher(allPossibleSearchContainers);
+const card = new Card(cookie);
+const searcher = new Searcher(card, allPossibleSearchContainers);
+const searchValidation = new SearchValidation(errorSpan);
 
 
 // Рендер хеддера
@@ -67,6 +73,7 @@ document.addEventListener('click', (event) => {
         api.signIn(toSubmit)
           .then((res) => {
             if (res.status === 200) {
+              card.setCheckboxAndMessageState();
               popup.closePopup(whatPopupIsOpened);
               header.renderHeader();
             } else {
@@ -97,6 +104,7 @@ document.addEventListener('click', (event) => {
   // Логаут десктоп
   if (event.target.id === 'logout-button' || event.target.id === 'logout-image') {
     api.signOut().then(() => {
+      searcher.removeContainerFromDOM('cards-container')
       header.renderHeader();
     });
   }
@@ -104,6 +112,7 @@ document.addEventListener('click', (event) => {
   // Логаут мобильная версия
   if (event.target.id === 'mobile-logout-button' || event.target.id === 'mobile-logout-image') {
     api.signOut().then(() => {
+      searcher.removeContainerFromDOM('cards-container')
       header.closeMobileMenu();
       header.renderHeader();
     });
@@ -135,24 +144,45 @@ document.addEventListener('click', (event) => {
   // Сабмит поиска новостей
   if (event.target.classList.contains('search__button')) {
     event.preventDefault();
-    searcher.removeContainerFromDOM();
-    const whatToSearch = form.getDataFromForm('search-button');
-    searcher.addContainerToDOM('preloader-container');
-    newsApi.getNews(whatToSearch.key)
-      .then((res) => {
-        searcher.setInitialCondition(res.res.articles, res.key);
-        searcher.addContainerToDOM(res.res.articles.length > 0 ? 'cards-container' : 'not-found-container');
-        searcher.addThreeCards();
-      });
+    const validationResult = searchValidation.validate(searchForm.searchField.value);
+    if (validationResult) {
+      searcher.removeContainerFromDOM();
+      const whatToSearch = form.getDataFromForm('search-button');
+      searcher.addContainerToDOM('preloader-container');
+      newsApi.getNews(whatToSearch.key)
+        .then((res) => {
+          searcher.setInitialCondition(res.res.articles, res.key);
+          searcher.addContainerToDOM(res.res.articles.length > 0 ? 'cards-container' : 'not-found-container');
+          searcher.addThreeCards();
+        })
+        .catch(err => {
+
+        })
+    }
+    if (!validationResult) {
+      searchValidation.activateErrorMessage();
+      setTimeout(() => {
+        searchValidation.deactivateErrorMessage();
+      }, 5000);
+    }
+    console.log(searchForm.searchField.value);
+
   }
+
   // Показать еще
   if (event.target.classList.contains('cards-container__button')) {
     searcher.addThreeCards();
   }
+
+  //
+  if (event.target.classList.contains('save-checkbox__lable')) {
+    console.log(searcher.getDisplayedCards());
+    console.log(event.target);
+  }
 });
 
 document.addEventListener('keyup', (event) => {
-  if (event.key === 'Escape') {
+  if (event.key === 'Escape' && document.querySelector('.popup')) {
     popup.closePopup('.popup');
   }
 });

@@ -19,6 +19,7 @@
 @import url(../blocks/mobile-menu/mobile-menu.css);
 @import url(../blocks/switcher/switcher.css);
 @import url(../blocks/mobile-popup/mobile-popup.css);
+@import url(../button-error-message/button-error-message.css);
 
 @font-face {
     src: url(../fonts/Roboto/Roboto-Regular.ttf);

@@ -59,4 +59,32 @@ export default class Api {
     })
       .then((res) => res);
   }
+
+  saveArticle(
+    keyword,
+    title,
+    text,
+    date,
+    source,
+    link,
+    image,
+  ) {
+    return fetch(`${this.serverAdress}/articles`, {
+      method: 'POST',
+      credentials: 'includes',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        keyword,
+        title,
+        text,
+        date,
+        source,
+        link,
+        image,
+      }),
+    })
+      .then((res) => res.json());
+  }
 }
