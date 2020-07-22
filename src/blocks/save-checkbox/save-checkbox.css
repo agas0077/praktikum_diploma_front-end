@@ -3,10 +3,12 @@
 @import url(./_add/save-checkbox_add.css);
 @import url(./_delete/save-checkbox_delete.css);
 
+/* TODO: Удалить */
+
 .save-checkbox {
     position: absolute;
     top: 24px;
-    right: 24px; 
+    right: 24px;
     z-index: -1;
     opacity: 0;
 }
@@ -38,7 +40,7 @@
     display: flex;
 }
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
     .save-checkbox__lable:hover ~ .save-checkbox__message.save-checkbox__message_hide {
         display: none;
     }

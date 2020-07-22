@@ -1,0 +1,7 @@
+.card__button_add {
+  background-image: url(../../../../images/checkbox.png);
+}
+
+.card__button_add:hover {
+  background-image: url(../../../../images/checkbox-hover.png);
+}

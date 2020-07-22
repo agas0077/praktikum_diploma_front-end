@@ -17,5 +17,7 @@
       "class-methods-use-this":"off",
       "no-undef":"off",
       "no-plusplus":"off",
+      "no-param-reassign":"off",
+      "consistent-return":"off",
     }
 }

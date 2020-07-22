@@ -14,6 +14,7 @@ import Card from '../js/components/Card';
 import SearchValidation from '../js/components/SearchValidation';
 
 // Константы
+const page = 'main';
 const allPossiblePopupForms = ['reg', 'auth'];
 const allPossibleSearchContainers = ['cards-container', 'preloader-container', 'not-found-container'];
 const searchForm = document.forms.search;
@@ -25,16 +26,16 @@ let whatPopupIsOpened;
 // Инициализация классов
 
 // Поменять на mesto4
-const api = new Api('http://localhost:3000');
+const api = new Api('https://api.mesto4.fun');
 const validation = new FormValidation(allPossiblePopupForms);
 const cookie = new Cookie();
 const popup = new Popup(validation);
-const header = new Header('main', cookie);
+const header = new Header(page, cookie);
 const form = new From();
 const errorHandler = new ErrorHandler();
 const newsApi = new NewsApi();
-const card = new Card(cookie);
-const searcher = new Searcher(card, allPossibleSearchContainers);
+const card = new Card(page, cookie);
+const searcher = new Searcher(card, allPossibleSearchContainers, page);
 const searchValidation = new SearchValidation(errorSpan);
 
 
@@ -47,6 +48,7 @@ window.addEventListener('resize', () => {
 
 // Слушатели
 document.addEventListener('click', (event) => {
+  console.log(event.target)
   // Открытие десктопного попапа входа
   if (event.target.id === 'login-button') {
     popup.openPopup('auth-desktop-popup');
@@ -54,7 +56,7 @@ document.addEventListener('click', (event) => {
   }
 
   // Закрытие десктопного попапа
-  if (event.target.classList.contains('popup__close')) {
+  if (event.target.classList.contains('popup__close') || event.target.classList.contains('popup')) {
     popup.closePopup('.popup');
     whatPopupIsOpened = '';
   }
@@ -73,7 +75,7 @@ document.addEventListener('click', (event) => {
         api.signIn(toSubmit)
           .then((res) => {
             if (res.status === 200) {
-              card.setCheckboxAndMessageState();
+              card.setSaveButtonAndMessageState();
               popup.closePopup(whatPopupIsOpened);
               header.renderHeader();
             } else {
@@ -104,7 +106,7 @@ document.addEventListener('click', (event) => {
   // Логаут десктоп
   if (event.target.id === 'logout-button' || event.target.id === 'logout-image') {
     api.signOut().then(() => {
-      searcher.removeContainerFromDOM('cards-container')
+      searcher.removeContainerFromDOM('cards-container');
       header.renderHeader();
     });
   }
@@ -112,7 +114,7 @@ document.addEventListener('click', (event) => {
   // Логаут мобильная версия
   if (event.target.id === 'mobile-logout-button' || event.target.id === 'mobile-logout-image') {
     api.signOut().then(() => {
-      searcher.removeContainerFromDOM('cards-container')
+      searcher.removeContainerFromDOM('cards-container');
       header.closeMobileMenu();
       header.renderHeader();
     });
@@ -151,13 +153,10 @@ document.addEventListener('click', (event) => {
       searcher.addContainerToDOM('preloader-container');
       newsApi.getNews(whatToSearch.key)
         .then((res) => {
-          searcher.setInitialCondition(res.res.articles, res.key);
+          searcher.setInitialState(res.res.articles, res.key);
           searcher.addContainerToDOM(res.res.articles.length > 0 ? 'cards-container' : 'not-found-container');
-          searcher.addThreeCards();
-        })
-        .catch(err => {
-
-        })
+          searcher.addCards();
+        });
     }
     if (!validationResult) {
       searchValidation.activateErrorMessage();
@@ -166,22 +165,42 @@ document.addEventListener('click', (event) => {
       }, 5000);
     }
     console.log(searchForm.searchField.value);
-
   }
 
   // Показать еще
   if (event.target.classList.contains('cards-container__button')) {
-    searcher.addThreeCards();
+    searcher.addCards();
   }
 
-  //
-  if (event.target.classList.contains('save-checkbox__lable')) {
-    console.log(searcher.getDisplayedCards());
-    console.log(event.target);
+  // Сохранить статью
+  if (event.target.classList.contains('card__button_add')) {
+    event.preventDefault();
+    const cardToSave = event.target.closest('.card');
+    const infoToSave = searcher.getArticleToSave(cardToSave);
+    api.saveArticle(infoToSave)
+      .then((res) => {
+        const cardBtn = cardToSave.querySelector('.card__button');
+        card.setPushedButtonState(cardBtn);
+        searcher.saveArticleId(cardToSave.id, res.id);
+      });
+  }
+
+  // Удаленить статью
+  if (event.target.classList.contains('card__button_add-pushed')) {
+    event.preventDefault();
+    const cardToDelete = event.target.closest('.card');
+    const articleId = searcher.getArticleToDelete(cardToDelete);
+    api.deleteArticle(articleId)
+      .then(() => {
+        searcher.deleteCardFromArticlesToSave.call(searcher, cardToDelete);
+        const cardBtn = cardToDelete.querySelector('.card__button');
+        card.setPushedButtonState(cardBtn);
+      });
   }
 });
 
 document.addEventListener('keyup', (event) => {
+  // Закрытие попапа по нажатию на ESC
   if (event.key === 'Escape' && document.querySelector('.popup')) {
     popup.closePopup('.popup');
   }

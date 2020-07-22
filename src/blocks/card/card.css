@@ -5,6 +5,8 @@
 @import url(./__source/card__source.css);
 @import url(./__key-word/card__key-word.css);
 @import url(./__main-part/card__main-part.css);
+@import url(./__button/card__button.css);
+@import url(./__message/card__message.css);
 
 .card {
     position: relative;

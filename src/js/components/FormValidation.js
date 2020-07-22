@@ -1,4 +1,4 @@
-const eValidator = require('email-validator');
+import validator from 'validator';
 
 // Чтобы работал, надо в качестве аргумента передать массив всех возможно-существующих форм
 export default class FormValidation {
@@ -48,7 +48,7 @@ export default class FormValidation {
   // Проверяет введенные сообщения в элементы формы на соответствия требованиям валидации
   _validation(element) {
     const errorElement = document.querySelector(`#error-${element.id}`);
-    if (element.id === 'email' && !eValidator.validate(element.value)) {
+    if (element.id === 'email' && !validator.isEmail(element.value)) {
       this._activateError(errorElement, element);
       return false;
     }
@@ -88,7 +88,7 @@ export default class FormValidation {
     switch (element.name) {
       case 'email':
         if (element.value.length === 0) return 'Это обязательное поле';
-        if (!eValidator.validate(element.value)) return 'Здесь должен быть e-mail';
+        if (!validator.isEmail(element.value)) return 'Здесь должен быть e-mail';
         break;
       case 'password':
         if (element.value.length === 0) return 'Это обязательное поле';

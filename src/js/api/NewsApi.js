@@ -22,23 +22,21 @@ export default class NewsApi {
   }
 
   getNews(keyWord) {
-    const url = 'http://newsapi.org/v2/everything?'
+    const url = 'https://praktikum.tk/news/v2/top-headlines?country=us&'
           + `q=${keyWord}&`
           + `from=${this._getFromDate()}&`
           + `to=${this._getTodayDate()}&`
           + 'sortBy=popularity&'
-          + 'pageSize=10&'
+          + 'pageSize=100&'
           + 'apiKey=04a502993549435f941d419aba969f0d';
 
     const req = new Request(url);
 
     return fetch(req)
       .then((res) => res.json())
-      .then((res) => {
-        return {
-          res,
-          key: keyWord,
-        }
-      })
+      .then((res) => ({
+        res,
+        key: keyWord,
+      }));
   }
 }

@@ -1,6 +1,9 @@
-const menuButtonWhite = require('../../images/menu-button-white.png');
-const closeButtonWhite = require('../../images/close.png');
-const exitButtonWhite = require('../../images/exit-white.png');
+import menuButtonBlack from '../../images/menu-button-black.png';
+import menuButtonWhite from '../../images/menu-button-white.png';
+import closeButtonWhite from '../../images/close.png';
+import exitButtonWhite from '../../images/exit-white.png';
+import exitButtonBlack from '../../images/exit-black.png';
+
 
 export default class Header {
   constructor(page, cookieClass) {
@@ -8,12 +11,13 @@ export default class Header {
     this.cookie = cookieClass;
     this.isLogged = this.cookie.getACookieValue('isLogged') === '1';
     this.name = this.cookie.getACookieValue('name');
+    this.color = this._blackOrWhite();
   }
 
   _renderMainHeader() {
     return `
-        <div class="header header_white">
-          <div class="header__title header__title_white">NewsExplorer</div>
+        <div class="header header_${this.color}">
+          <div class="header__title header__title_${this.color}">NewsExplorer</div>
           ${this.isLogged ? this._renderMenuIfLogged() : this._renderMenuIfNotLogged()}
         </div>
       `;
@@ -26,9 +30,9 @@ export default class Header {
   _renderMenuIfLogged() {
     return `
       <div class="menu">
-        <a href="./index.html" class="menu__button menu__button_on-${this._blackOrWhite()} menu__button_${this._blackOrWhite()}">Главная</a>
-        <a href="./secondPage.html" class="menu__button menu__button_off menu__button_${this._blackOrWhite()}">Сохраненные статьи</a>
-        <button id="logout-button" type="button" class="menu__auth menu__auth_${this._blackOrWhite()}">${this.name} &nbsp;<img id="logout-image" src="./images/exit-${this._blackOrWhite()}.png"></button>
+        <a href="./index.html" class="menu__button menu__button_${this.page === 'main' ? `on-${this.color}` : 'off'} menu__button_${this.color}">Главная</a>
+        <a href="./secondPage.html" class="menu__button menu__button_${this.page === 'main' ? 'off' : `on-${this.color}`} menu__button_${this.color}">Сохраненные статьи</a>
+        <button id="logout-button" type="button" class="menu__auth menu__auth_${this.color}">${this.name} &nbsp;<img id="logout-image" src="./images/exit-${this.color}.png"></button>
       </div>
     `;
   }
@@ -36,8 +40,8 @@ export default class Header {
   _renderMenuIfNotLogged() {
     return `
       <div class="menu">
-        <a href="./index.html" class="menu__button menu__button_on-white menu__button_white">Главная</a>
-        <button id="login-button" type="button" class="menu__auth menu__auth_white">Авторизоваться</button>
+        <a href="./index.html" class="menu__button menu__button_on-${this.color} menu__button_${this.color}">Главная</a>
+        <button id="login-button" type="button" class="menu__auth menu__auth_${this.color}">Авторизоваться</button>
       </div>
     `;
   }
@@ -53,9 +57,9 @@ export default class Header {
 
   _renderMobileHeader() {
     return `
-      <div class="mobile-header mobile-header_white">
+      <div class="mobile-header mobile-header_${this.color}">
         <div class="mobile-header__title">NewsExplorer</div>
-        <img id="mobile-menu-button" class="mobile-header__menu-button" src="${menuButtonWhite}" alt="Кнопка меню">
+        <img id="mobile-menu-button" class="mobile-header__menu-button" src="${this.page === 'main' ? menuButtonWhite : menuButtonBlack}" alt="Кнопка меню">
         <img style="display: none" id="mobile-menu-close" class="mobile-header__menu-button" src="${closeButtonWhite}" alt="Кнопка меню">
       </div>
     `;
@@ -101,7 +105,7 @@ export default class Header {
 
   openMobileMenu(event) {
     document.querySelector('body').insertAdjacentHTML('afterbegin', this._renderMobileMenu());
-    document.querySelector('.mobile-header').classList.remove('mobile-header_white');
+    document.querySelector('.mobile-header').classList.remove(`mobile-header_${this.color}`);
     document.querySelector('.mobile-header').classList.add('mobile-header_open');
     this.changeMobileHeaderButton(event);
     document.body.style.overflow = 'hidden';
@@ -109,7 +113,7 @@ export default class Header {
 
   closeMobileMenu() {
     document.querySelector('.mobile-menu').remove();
-    document.querySelector('.mobile-header').classList.add('mobile-header_white');
+    document.querySelector('.mobile-header').classList.add(`mobile-header_${this.color}`);
     document.querySelector('.mobile-header').classList.remove('mobile-header_open');
     document.body.style.overflow = '';
   }
@@ -121,10 +125,10 @@ export default class Header {
     const windowWidth = window.innerWidth > 550;
     switch (windowWidth) {
       case true:
-        document.querySelector('.header-container').insertAdjacentHTML('afterbegin', this._renderMainHeader());
+        document.querySelector(`${this.page === 'main' ? '.header-container' : 'body'}`).insertAdjacentHTML('afterbegin', this._renderMainHeader());
         break;
       case false:
-        document.querySelector('.header-container').insertAdjacentHTML('afterbegin', this._renderMobileHeader());
+        document.querySelector(`${this.page === 'main' ? '.header-container' : 'body'}`).insertAdjacentHTML('afterbegin', this._renderMobileHeader());
     }
   }
 }

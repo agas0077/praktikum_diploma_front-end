@@ -3,6 +3,7 @@ export default class Api {
     this.serverAdress = serverAdress;
   }
 
+  // Регистрация
   signUp(credentials) {
     const { email, password, name } = credentials;
     return fetch(`${this.serverAdress}/signup`, {
@@ -29,6 +30,7 @@ export default class Api {
       .catch((err) => err.message);
   }
 
+  // Вход
   signIn(credentials) {
     const { email, password } = credentials;
     return fetch('http://localhost:3000/signin', {
@@ -53,6 +55,7 @@ export default class Api {
       .catch((err) => err.message);
   }
 
+  // Выход
   signOut() {
     return fetch(`${this.serverAdress}/signout`, {
       credentials: 'include',
@@ -60,18 +63,15 @@ export default class Api {
       .then((res) => res);
   }
 
-  saveArticle(
-    keyword,
-    title,
-    text,
-    date,
-    source,
-    link,
-    image,
-  ) {
+  // Сохранение карточки
+  saveArticle(articleObj) {
+    console.log(articleObj)
+    const {
+      keyword, title, text, date, source, link, image,
+    } = articleObj;
     return fetch(`${this.serverAdress}/articles`, {
       method: 'POST',
-      credentials: 'includes',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -84,6 +84,26 @@ export default class Api {
         link,
         image,
       }),
+    })
+      .then((res) => res.json());
+  }
+
+  // Удаление карточки
+  deleteArticle(articleId) {
+    return fetch(`${this.serverAdress}/articles/${articleId}`, {
+      method: 'DELETE',
+      credentials: 'include',
+    })
+      .then((res) => {
+        if (res.ok) return res;
+        return res.json();
+      });
+  }
+
+  // Получение сохраненных карточек
+  getArticles() {
+    return fetch(`${this.serverAdress}/articles/`, {
+      credentials: 'include',
     })
       .then((res) => res.json());
   }
