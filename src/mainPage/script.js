@@ -156,7 +156,6 @@ document.addEventListener('click', (event) => {
       searcher.addContainerToDOM('preloader-container');
       newsApi.getNews(whatToSearch.key)
         .then((res) => {
-          console.log(res);
           searcher.setInitialState(res.res.articles, res.key);
           searcher.addContainerToDOM(res.res.articles.length > 0 ? 'cards-container' : 'not-found-container');
           searcher.addCards();
