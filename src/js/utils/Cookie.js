@@ -1,4 +1,5 @@
 export default class Cookie {
+  // Возвращает значение по переданному в виде строки имени куки
   getACookieValue(cookieName) {
     const arr = document.cookie.split(/;\s/);
     const whatToFind = new RegExp(`^${cookieName}`);

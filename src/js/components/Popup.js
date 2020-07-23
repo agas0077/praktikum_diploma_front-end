@@ -6,6 +6,7 @@ export default class Popup {
     this.body = document.querySelector('body');
   }
 
+  // Собирает десктопный попап регистрации
   _renderRegPopup() {
     return `
     <div class="popup" id='reg-desktop-popup'>
@@ -38,6 +39,7 @@ export default class Popup {
     `;
   }
 
+  // Собирает десктопный попап авторизации
   _renderAuthPopup() {
     return `
       <div class="popup" id='auth-desktop-popup'>
@@ -65,6 +67,7 @@ export default class Popup {
     `;
   }
 
+  // Собирет десктопный попап успешной регистрации
   _renderSuccessPopup() {
     return `
       <div class="popup" id='sucesses-popup'>
@@ -77,6 +80,7 @@ export default class Popup {
     `;
   }
 
+  // Собирает мобильный попап авторизации
   _renderAuthMobilePopup() {
     return `
     <div class="mobile-popup" id="auth-mobile-popup">
@@ -100,6 +104,7 @@ export default class Popup {
     `;
   }
 
+  // Собирает мобильный попап регистрации
   _rednerRegMobilePopup() {
     return `
     <div class="mobile-popup" id='reg-mobile-popup'>
@@ -127,6 +132,7 @@ export default class Popup {
     `;
   }
 
+  // Собирает мобильный попап успешной регистрации
   _renderSuccessMobilePopup() {
     return `
     <div class="mobile-popup" id='sucesses-popup'>
@@ -138,6 +144,7 @@ export default class Popup {
     `;
   }
 
+  // Меняет попапы
   switching() {
     if (document.querySelector('.popup')) {
       let whatShouldBeOpend;
@@ -170,6 +177,7 @@ export default class Popup {
     }
   }
 
+  // Открывает попапы
   openPopup(popupId) {
     switch (popupId) {
       case 'reg-desktop-popup':
@@ -204,6 +212,7 @@ export default class Popup {
     }
   }
 
+  // Закрывает попапы
   closePopup(popupClass) {
     document.querySelector(popupClass).remove();
     document.body.style.overflow = '';

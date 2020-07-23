@@ -28,6 +28,12 @@ if (cookie.getACookieValue('isLogged') !== '1') {
 // Рендер хеддера
 header.renderHeader();
 window.addEventListener('resize', () => {
+  if (document.querySelector('.mobile-menu')) {
+    header.closeMobileMenu();
+  }
+  if (document.querySelector('.mobile-popup')) {
+    popup.closePopup('.mobile-popup');
+  }
   header.renderHeader();
 });
 
@@ -84,11 +90,6 @@ document.addEventListener('click', (event) => {
     api.signOut().then(() => {
       document.location.href = './index.html';
     });
-  }
-
-  // Покзаать еще
-  if (event.target.classList.contains('cards-container__button')) {
-    searcher.addCards();
   }
 
   // Удалить карточку

@@ -13,6 +13,7 @@ export default class Header {
     this.color = this._blackOrWhite();
   }
 
+  // Собирает контейнер хэдера
   _renderMainHeader() {
     return `
         <div class="header header_${this.color}">
@@ -22,10 +23,12 @@ export default class Header {
       `;
   }
 
+  // Определяет стили - черный или белый
   _blackOrWhite() {
     return this.page === 'main' ? 'white' : 'black';
   }
 
+  // Собирает десктопное меню, если пользователь имет валидный JWT
   _renderMenuIfLogged() {
     return `
       <div class="menu">
@@ -36,6 +39,7 @@ export default class Header {
     `;
   }
 
+  // Собирает десктопное меню, если пользователь не имет валидного JWT
   _renderMenuIfNotLogged() {
     return `
       <div class="menu">
@@ -45,6 +49,7 @@ export default class Header {
     `;
   }
 
+  // Убирает десктопный или мобильный хэдер
   _removeHeader() {
     if (document.querySelector('.header')) {
       document.querySelector('.header').remove();
@@ -54,6 +59,7 @@ export default class Header {
     }
   }
 
+  // Собирает мобильный хэдер
   _renderMobileHeader() {
     return `
       <div class="mobile-header mobile-header_${this.color}">
@@ -64,6 +70,7 @@ export default class Header {
     `;
   }
 
+  // Собирет мобильное меню, если пользователь имеет валидный JWT
   _renderMobileMenuIfLogged() {
     return `
     <div class="mobile-menu">
@@ -76,6 +83,7 @@ export default class Header {
     `;
   }
 
+  // Собирет мобильное меню, если пользователь не имеет валидного JWT
   _renderMobileMenuIfNotLogged() {
     return `
       <div class="mobile-menu">
@@ -87,10 +95,12 @@ export default class Header {
       `;
   }
 
+  // Определяет какое именно мобильное меню надо собрать
   _renderMobileMenu() {
     return this.isLogged ? this._renderMobileMenuIfLogged() : this._renderMobileMenuIfNotLogged();
   }
 
+  // Изменяет кнопку в меню (крестик или две полосочки)
   changeMobileHeaderButton(event) {
     if (event.target.id === 'mobile-menu-button') {
       document.querySelector('#mobile-menu-button').style.display = 'none';
@@ -102,6 +112,7 @@ export default class Header {
     }
   }
 
+  // Открывет мобильное меню
   openMobileMenu(event) {
     document.querySelector('body').insertAdjacentHTML('afterbegin', this._renderMobileMenu());
     document.querySelector('.mobile-header').classList.remove(`mobile-header_${this.color}`);
@@ -110,6 +121,7 @@ export default class Header {
     document.body.style.overflow = 'hidden';
   }
 
+  // Закрывает мобильное меню
   closeMobileMenu() {
     document.querySelector('.mobile-menu').remove();
     document.querySelector('.mobile-header').classList.add(`mobile-header_${this.color}`);
@@ -117,6 +129,7 @@ export default class Header {
     document.body.style.overflow = '';
   }
 
+  // Рендерит хэдер
   renderHeader() {
     this._removeHeader();
     this.isLogged = this.cookie.getACookieValue('isLogged') === '1';

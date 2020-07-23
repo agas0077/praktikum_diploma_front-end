@@ -41,9 +41,14 @@ const searchValidation = new SearchValidation(errorSpan);
 // Рендер хеддера
 header.renderHeader();
 window.addEventListener('resize', () => {
+  if (document.querySelector('.mobile-menu')) {
+    header.closeMobileMenu();
+  }
+  if (document.querySelector('.mobile-popup')) {
+    popup.closePopup('.mobile-popup');
+  }
   header.renderHeader();
 });
-
 
 // Слушатели
 document.addEventListener('click', (event) => {

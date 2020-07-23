@@ -1,4 +1,5 @@
 export default class From {
+  // Определяет форму по нажатой кнопке
   _defineFormByButton(buttonId) {
     switch (buttonId) {
       case 'auth-button':
@@ -12,6 +13,7 @@ export default class From {
     }
   }
 
+  // Достает информацию из формы
   getDataFromForm(buttonId) {
     const form = this._defineFormByButton(buttonId);
     if (form === 'auth') {
