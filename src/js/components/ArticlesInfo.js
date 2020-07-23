@@ -22,7 +22,9 @@ export default class ArticlesInfo {
       return prevVal;
     }, {});
     const keywordArray = Object.keys(counts);
-    keywordArray.sort((a, b) => (counts[a] === counts[b] ? a.localeCompare(b) : counts[b] - counts[a]));
+    keywordArray.sort((a, b) => (counts[a] === counts[b]
+      ? a.localeCompare(b)
+      : counts[b] - counts[a]));
     return keywordArray;
   }
 
@@ -99,7 +101,6 @@ export default class ArticlesInfo {
 
   // Добавлене подходящего контейнера в DOM
   addContainerToDOM() {
-    console.log(this.myArticles);
     if (Array.isArray(this.myArticles) && this.numberOfSavedArticles() !== 0) {
       return document.querySelector('.body').insertAdjacentHTML('afterbegin', this._renderContainer());
     }

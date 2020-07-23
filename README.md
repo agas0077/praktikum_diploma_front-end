@@ -2,7 +2,7 @@
 Hi, my name is Andrey and this is my first project on GH.
 
 ### Version
-The current version is __1.1.0__
+The current version is __1.2.0__
 
 ### Techs
 In this project I used such technologies as HTML, CSS, JS, Webpack.

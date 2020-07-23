@@ -1,7 +1,7 @@
-import validator from 'validator'
-const notFound = require('../../images/not-found_v1.png');
-const defaultImg = require('../../images/defaultNewsImage.jpg');
+import validator from 'validator';
 
+import notFound from '../../images/not-found_v1.png'
+import defaultImg from '../../images/defaultNewsImage.jpg'
 
 export default class Searcher {
   constructor(cardClass, allContainers, page) {
@@ -201,7 +201,6 @@ export default class Searcher {
   // Сохраняет id БД сохраненной карточки
   saveArticleId(cardId, id) {
     this.articlesToSave[cardId].push(id);
-    console.log(this.articlesToSave);
   }
 
   // Возвращает id БД для удаления сохраненной карточки

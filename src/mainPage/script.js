@@ -25,7 +25,6 @@ let whatPopupIsOpened;
 
 // Инициализация классов
 
-// Поменять на mesto4
 const api = new Api('https://api.mesto4.fun');
 const validation = new FormValidation(allPossiblePopupForms);
 const cookie = new Cookie();
@@ -48,7 +47,6 @@ window.addEventListener('resize', () => {
 
 // Слушатели
 document.addEventListener('click', (event) => {
-  console.log(event.target)
   // Открытие десктопного попапа входа
   if (event.target.id === 'login-button') {
     popup.openPopup('auth-desktop-popup');
@@ -164,7 +162,6 @@ document.addEventListener('click', (event) => {
         searchValidation.deactivateErrorMessage();
       }, 5000);
     }
-    console.log(searchForm.searchField.value);
   }
 
   // Показать еще

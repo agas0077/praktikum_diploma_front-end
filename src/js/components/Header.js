@@ -2,7 +2,6 @@ import menuButtonBlack from '../../images/menu-button-black.png';
 import menuButtonWhite from '../../images/menu-button-white.png';
 import closeButtonWhite from '../../images/close.png';
 import exitButtonWhite from '../../images/exit-white.png';
-import exitButtonBlack from '../../images/exit-black.png';
 
 
 export default class Header {
@@ -17,7 +16,7 @@ export default class Header {
   _renderMainHeader() {
     return `
         <div class="header header_${this.color}">
-          <div class="header__title header__title_${this.color}">NewsExplorer</div>
+          <a href="./index.html" class="header__title header__title_${this.color}">NewsExplorer</a>
           ${this.isLogged ? this._renderMenuIfLogged() : this._renderMenuIfNotLogged()}
         </div>
       `;

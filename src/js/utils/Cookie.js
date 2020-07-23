@@ -6,6 +6,7 @@ export default class Cookie {
       if (whatToFind.test(item)) {
         return item;
       }
+      return '';
     });
     let toReturn = cookie ? cookie.split('=')[1] : null;
     toReturn = decodeURIComponent(toReturn);

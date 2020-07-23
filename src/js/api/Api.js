@@ -33,7 +33,7 @@ export default class Api {
   // Вход
   signIn(credentials) {
     const { email, password } = credentials;
-    return fetch('http://localhost:3000/signin', {
+    return fetch(`${this.serverAdress}/signin`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -65,7 +65,6 @@ export default class Api {
 
   // Сохранение карточки
   saveArticle(articleObj) {
-    console.log(articleObj)
     const {
       keyword, title, text, date, source, link, image,
     } = articleObj;

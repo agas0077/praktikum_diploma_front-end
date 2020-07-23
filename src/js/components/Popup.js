@@ -1,4 +1,4 @@
-const closeImg = require('../../images/close.png');
+import closeImg from '../../images/close.png';
 
 export default class Popup {
   constructor(validation) {

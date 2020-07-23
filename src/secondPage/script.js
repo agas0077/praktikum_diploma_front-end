@@ -15,8 +15,7 @@ const allPossibleSearchContainers = ['cards-container', 'preloader-container', '
 // Инициализация классов
 const cookie = new Cookie();
 const header = new Header(page, cookie);
-// Поменять на mesto4
-const api = new Api('http://localhost:3000');
+const api = new Api('https://api.mesto4.fun');
 const articlesInfo = new ArticlesInfo(cookie);
 const card = new Card(page, cookie);
 const searcher = new Searcher(card, allPossibleSearchContainers, page);
@@ -53,7 +52,6 @@ api.getArticles()
         searcher.addContainerToDOM('not-found-container');
     }
   });
-
 
 
 // Слушатели

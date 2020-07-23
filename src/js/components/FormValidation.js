@@ -19,8 +19,7 @@ export default class FormValidation {
 
   // Находит элементы формы, когда создается попап
   _findInDOM(arr) {
-    let temp;
-    temp = arr.map((item) => document.querySelector(`#${item}`));
+    const temp = arr.map((item) => document.querySelector(`#${item}`));
     return temp;
   }
 

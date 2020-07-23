@@ -22,7 +22,7 @@ export default class NewsApi {
   }
 
   getNews(keyWord) {
-    const url = 'https://praktikum.tk/news/v2/top-headlines?country=us&'
+    const url = 'https://praktikum.tk/news/v2/everything?'
           + `q=${keyWord}&`
           + `from=${this._getFromDate()}&`
           + `to=${this._getTodayDate()}&`
