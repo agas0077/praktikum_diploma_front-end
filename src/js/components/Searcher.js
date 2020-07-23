@@ -1,7 +1,7 @@
 import validator from 'validator';
 
-import notFound from '../../images/not-found_v1.png'
-import defaultImg from '../../images/defaultNewsImage.jpg'
+import notFound from '../../images/not-found_v1.png';
+import defaultImg from '../../images/defaultNewsImage.jpg';
 
 export default class Searcher {
   constructor(cardClass, allContainers, page) {

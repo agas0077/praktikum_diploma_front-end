@@ -19,6 +19,6 @@
       "no-plusplus":"off",
       "no-param-reassign":"off",
       "consistent-return":"off",
-      "no-restricted-globals":"off",
+      "no-restricted-globals":"off"
     }
 }
