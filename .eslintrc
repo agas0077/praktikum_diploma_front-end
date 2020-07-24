@@ -15,5 +15,10 @@
       "no-console":"off",
       "no-underscore-dangle":"off",
       "class-methods-use-this":"off",
+      "no-undef":"off",
+      "no-plusplus":"off",
+      "no-param-reassign":"off",
+      "consistent-return":"off",
+      "no-restricted-globals":"off"
     }
 }

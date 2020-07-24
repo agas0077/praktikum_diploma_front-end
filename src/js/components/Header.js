@@ -1,57 +1,146 @@
+import menuButtonBlack from '../../images/menu-button-black.png';
+import menuButtonWhite from '../../images/menu-button-white.png';
+import closeButtonWhite from '../../images/close.png';
+import exitButtonWhite from '../../images/exit-white.png';
+
+
 export default class Header {
-  constructor(page, cookie) {
+  constructor(page, cookieClass) {
     this.page = page;
-    this.cookie = cookie;
-    this.isLogged = this.cookie.getACookieValue('isLogged') === '1' ? true : false;
-    this.name = this.cookie.getACookieValue('name')
+    this.cookie = cookieClass;
+    this.isLogged = this.cookie.getACookieValue('isLogged') === '1';
+    this.name = this.cookie.getACookieValue('name');
+    this.color = this._blackOrWhite();
   }
 
-  _renderMain() {
+  // Собирает контейнер хэдера
+  _renderMainHeader() {
     return `
-        <div class="header header_white">
-          <div class="header__title header__title_white">NewsExplorer</div>
+        <div class="header header_${this.color}">
+          <a href="./index.html" class="header__title header__title_${this.color}">NewsExplorer</a>
           ${this.isLogged ? this._renderMenuIfLogged() : this._renderMenuIfNotLogged()}
         </div>
       `;
   }
 
+  // Определяет стили - черный или белый
   _blackOrWhite() {
     return this.page === 'main' ? 'white' : 'black';
   }
 
+  // Собирает десктопное меню, если пользователь имет валидный JWT
   _renderMenuIfLogged() {
     return `
       <div class="menu">
-        <a href="./index.html" class="menu__button menu__button_on-${this._blackOrWhite()} menu__button_${this._blackOrWhite()}">Главная</a>
-        <a href="./secondPage.html" class="menu__button menu__button_off menu__button_${this._blackOrWhite()}">Сохраненные статьи</a>
-        <button id="logout-button" type="button" class="menu__auth menu__auth_${this._blackOrWhite()}">${this.name} &nbsp;<img id="logout-image" src="./images/exit-${this._blackOrWhite()}.png"></button>
+        <a href="./index.html" class="menu__button menu__button_${this.page === 'main' ? `on-${this.color}` : 'off'} menu__button_${this.color}">Главная</a>
+        <a href="./secondPage.html" class="menu__button menu__button_${this.page === 'main' ? 'off' : `on-${this.color}`} menu__button_${this.color}">Сохраненные статьи</a>
+        <button id="logout-button" type="button" class="menu__auth menu__auth_${this.color}">${this.name} &nbsp;<img id="logout-image" src="./images/exit-${this.color}.png"></button>
       </div>
     `;
   }
 
+  // Собирает десктопное меню, если пользователь не имет валидного JWT
   _renderMenuIfNotLogged() {
     return `
       <div class="menu">
-        <a href="./index.html" class="menu__button menu__button_on-white menu__button_white">Главная</a>
-        <button id="login-button" type="button" class="menu__auth menu__auth_white">Авторизоваться</button>
+        <a href="./index.html" class="menu__button menu__button_on-${this.color} menu__button_${this.color}">Главная</a>
+        <button id="login-button" type="button" class="menu__auth menu__auth_${this.color}">Авторизоваться</button>
       </div>
     `;
   }
 
+  // Убирает десктопный или мобильный хэдер
   _removeHeader() {
     if (document.querySelector('.header')) {
       document.querySelector('.header').remove();
     }
+    if (document.querySelector('.mobile-header')) {
+      document.querySelector('.mobile-header').remove();
+    }
   }
 
-  render() {
-    this._removeHeader()
-    this.isLogged = this.cookie.getACookieValue('isLogged') === '1' ? true : false;
-    this.name = this.cookie.getACookieValue('name')
-    switch (this.page) {
-      case 'main':
-        document.querySelector('.header-container').insertAdjacentHTML('afterbegin', this._renderMain());
-      case 'second':
+  // Собирает мобильный хэдер
+  _renderMobileHeader() {
+    return `
+      <div class="mobile-header mobile-header_${this.color}">
+        <div class="mobile-header__title">NewsExplorer</div>
+        <img id="mobile-menu-button" class="mobile-header__menu-button" src="${this.page === 'main' ? menuButtonWhite : menuButtonBlack}" alt="Кнопка меню">
+        <img style="display: none" id="mobile-menu-close" class="mobile-header__menu-button" src="${closeButtonWhite}" alt="Кнопка меню">
+      </div>
+    `;
+  }
+
+  // Собирет мобильное меню, если пользователь имеет валидный JWT
+  _renderMobileMenuIfLogged() {
+    return `
+    <div class="mobile-menu">
+      <div class="mobile-menu__content">
+        <a href="./index.html" class="mobile-menu__button">Главная</a>
+        <a href="./secondPage.html" class="mobile-menu__button">Сохраненные статьи</a>
+        <button type="button" id="mobile-logout-button" class="mobile-menu__auth">${this.name} &nbsp;<img id="mobile-logout-image" src="${exitButtonWhite}" alt="Выход"></button>
+      </div>
+    </div>
+    `;
+  }
+
+  // Собирет мобильное меню, если пользователь не имеет валидного JWT
+  _renderMobileMenuIfNotLogged() {
+    return `
+      <div class="mobile-menu">
+        <div class="mobile-menu__content">
+          <a href="./index.html" class="mobile-menu__button">Главная</a>
+          <button type="button" id="mobile-login-button" class="mobile-menu__auth">Авторизоваться</button>
+        </div>
+      </div>
+      `;
+  }
+
+  // Определяет какое именно мобильное меню надо собрать
+  _renderMobileMenu() {
+    return this.isLogged ? this._renderMobileMenuIfLogged() : this._renderMobileMenuIfNotLogged();
+  }
+
+  // Изменяет кнопку в меню (крестик или две полосочки)
+  changeMobileHeaderButton(event) {
+    if (event.target.id === 'mobile-menu-button') {
+      document.querySelector('#mobile-menu-button').style.display = 'none';
+      document.querySelector('#mobile-menu-close').style = null;
+    }
+    if (event.target.id === 'mobile-menu-close') {
+      document.querySelector('#mobile-menu-close').style.display = 'none';
+      document.querySelector('#mobile-menu-button').style = null;
+    }
+  }
+
+  // Открывет мобильное меню
+  openMobileMenu(event) {
+    document.querySelector('body').insertAdjacentHTML('afterbegin', this._renderMobileMenu());
+    document.querySelector('.mobile-header').classList.remove(`mobile-header_${this.color}`);
+    document.querySelector('.mobile-header').classList.add('mobile-header_open');
+    this.changeMobileHeaderButton(event);
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Закрывает мобильное меню
+  closeMobileMenu() {
+    document.querySelector('.mobile-menu').remove();
+    document.querySelector('.mobile-header').classList.add(`mobile-header_${this.color}`);
+    document.querySelector('.mobile-header').classList.remove('mobile-header_open');
+    document.body.style.overflow = '';
+  }
+
+  // Рендерит хэдер
+  renderHeader() {
+    this._removeHeader();
+    this.isLogged = this.cookie.getACookieValue('isLogged') === '1';
+    this.name = this.cookie.getACookieValue('name');
+    const windowWidth = window.innerWidth > 550;
+    switch (windowWidth) {
+      case true:
+        document.querySelector(`${this.page === 'main' ? '.header-container' : 'body'}`).insertAdjacentHTML('afterbegin', this._renderMainHeader());
+        break;
+      case false:
+        document.querySelector(`${this.page === 'main' ? '.header-container' : 'body'}`).insertAdjacentHTML('afterbegin', this._renderMobileHeader());
     }
   }
 }

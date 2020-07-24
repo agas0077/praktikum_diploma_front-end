@@ -4,6 +4,9 @@
 @import url(./__text/card__text.css);
 @import url(./__source/card__source.css);
 @import url(./__key-word/card__key-word.css);
+@import url(./__main-part/card__main-part.css);
+@import url(./__button/card__button.css);
+@import url(./__message/card__message.css);
 
 .card {
     position: relative;
@@ -12,8 +15,11 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
+    text-decoration: none;
+    min-height: 420px;
+    justify-content: space-between;
 }
-    
+
 @media screen and (max-width: 768px) {
     .card {
         width: 224px;

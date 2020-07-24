@@ -1,13 +1,11 @@
-const { SIGNUPERROR } = require('../errors/api-errors');
-
 export default class Api {
   constructor(serverAdress) {
     this.serverAdress = serverAdress;
   }
 
+  // Регистрация
   signUp(credentials) {
     const { email, password, name } = credentials;
-    console.log(email, password, name);
     return fetch(`${this.serverAdress}/signup`, {
       method: 'POST',
       credentials: 'include',
@@ -21,21 +19,21 @@ export default class Api {
         name,
       }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok) return res;
+        return res.json();
+      })
       .then((res) => {
         if (res.ok) return res;
         return Promise.reject(res);
       })
-      .catch((err) => {
-        console.log(err);
-        // TODO Потом надо будет сделать так, чтобы сообщение об ошибке появлялось над кнопкой
-        alert(err.message);
-      });
+      .catch((err) => err.message);
   }
 
+  // Вход
   signIn(credentials) {
     const { email, password } = credentials;
-    return fetch('http://localhost:3000/signin', {
+    return fetch(`${this.serverAdress}/signin`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -57,6 +55,7 @@ export default class Api {
       .catch((err) => err.message);
   }
 
+  // Выход
   signOut() {
     return fetch(`${this.serverAdress}/signout`, {
       credentials: 'include',
@@ -64,11 +63,47 @@ export default class Api {
       .then((res) => res);
   }
 
-  someGet() {
-    return fetch(`${this.serverAdress}/users/me`, {
+  // Сохранение карточки
+  saveArticle(articleObj) {
+    const {
+      keyword, title, text, date, source, link, image,
+    } = articleObj;
+    return fetch(`${this.serverAdress}/articles`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        keyword,
+        title,
+        text,
+        date,
+        source,
+        link,
+        image,
+      }),
+    })
+      .then((res) => res.json());
+  }
+
+  // Удаление карточки
+  deleteArticle(articleId) {
+    return fetch(`${this.serverAdress}/articles/${articleId}`, {
+      method: 'DELETE',
       credentials: 'include',
     })
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+      .then((res) => {
+        if (res.ok) return res;
+        return res.json();
+      });
+  }
+
+  // Получение сохраненных карточек
+  getArticles() {
+    return fetch(`${this.serverAdress}/articles/`, {
+      credentials: 'include',
+    })
+      .then((res) => res.json());
   }
 }

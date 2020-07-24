@@ -5,8 +5,9 @@
 @import url(./__image-wrapper/about-container__image-wrapper.css);
 
 .about-container {
-    display: flex;
-    padding: 80px calc(100%/14) 80px;
+  background-color: #fff;;
+  display: flex;
+  padding: 80px calc(100%/14) 80px;
 }
 
 @media screen and (max-width: 768px) {
